@@ -10,6 +10,19 @@ const supabaseConfigured =
   Boolean(process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
 
 export default async function middleware(request: NextRequest) {
+  // Supabase's magic-link email points at its own /auth/v1/verify endpoint
+  // and, after verifying, redirects the browser to the bare Site URL with a
+  // ?code= param -- it does this regardless of the emailRedirectTo we
+  // request or what's allow-listed in Redirect URLs, at least on this
+  // project. Rather than depend on that cooperating, catch the ?code=
+  // wherever it lands and forward it to our actual handler.
+  const code = request.nextUrl.searchParams.get("code");
+  if (code && request.nextUrl.pathname !== "/auth/confirm") {
+    const confirmUrl = request.nextUrl.clone();
+    confirmUrl.pathname = "/auth/confirm";
+    return NextResponse.redirect(confirmUrl);
+  }
+
   const response = intlMiddleware(request) ?? NextResponse.next();
 
   // Until a real Supabase project is wired up (see .env.example), skip the
