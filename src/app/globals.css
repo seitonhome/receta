@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+:root {
+  --font-body: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --cream: #f6f1e7;
+  --cream-2: #eee5d4;
+  --cream-3: #e6dac2;
+  --cacao: #3a2a1e;
+  --cacao-soft: #6e5947;
+  --sage: #6c7f5c;
+  --sage-deep: #4f5f42;
+  --sage-tint: #e4e9dc;
+  --terracotta: #bf7148;
+  --terracotta-tint: #f2e0d3;
+  --rose: #c98f82;
+  --rose-tint: #f3e3df;
+  --gold: #9c7a2e;
+  --line: rgba(58, 42, 30, 0.15);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --cream: #1c1510;
+    --cream-2: #251c15;
+    --cream-3: #2e2219;
+    --cacao: #f1e7d6;
+    --cacao-soft: #c7b7a2;
+    --sage: #93a67f;
+    --sage-deep: #b4c49f;
+    --sage-tint: #2b3324;
+    --terracotta: #e08f62;
+    --terracotta-tint: #3a2a20;
+    --rose: #ddaa9d;
+    --rose-tint: #382722;
+    --gold: #d4ac5b;
+    --line: rgba(241, 231, 214, 0.14);
+    color-scheme: dark;
+  }
+}
+
+@theme inline {
+  --color-cream: var(--cream);
+  --color-cream-2: var(--cream-2);
+  --color-cream-3: var(--cream-3);
+  --color-cacao: var(--cacao);
+  --color-cacao-soft: var(--cacao-soft);
+  --color-sage: var(--sage);
+  --color-sage-deep: var(--sage-deep);
+  --color-sage-tint: var(--sage-tint);
+  --color-terracotta: var(--terracotta);
+  --color-terracotta-tint: var(--terracotta-tint);
+  --color-rose: var(--rose);
+  --color-rose-tint: var(--rose-tint);
+  --color-gold: var(--gold);
+  --color-line: var(--line);
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-body);
+}
+
+body {
+  background: var(--cream);
+  color: var(--cacao);
+}
