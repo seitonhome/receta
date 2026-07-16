@@ -36,7 +36,7 @@ export default async function SignInPage({
       <div className="mt-6">
         <SignInForm
           locale={locale}
-          next={next ?? `/${locale}/favoritos`}
+          next={next ?? `/${locale}/recetas`}
           labels={{
             emailLabel: t("emailLabel"),
             emailPlaceholder: t("emailPlaceholder"),

@@ -17,10 +17,12 @@ create table if not exists public.profiles (
 
 alter table public.profiles enable row level security;
 
+drop policy if exists "profiles are readable by their owner" on public.profiles;
 create policy "profiles are readable by their owner"
   on public.profiles for select
   using (auth.uid() = id);
 
+drop policy if exists "profiles are updatable by their owner" on public.profiles;
 create policy "profiles are updatable by their owner"
   on public.profiles for update
   using (auth.uid() = id);
@@ -71,6 +73,7 @@ alter table public.purchases enable row level security;
 -- Buyers can see their own purchase history; nothing else is exposed.
 -- Writes only ever happen through the service-role client in the webhook
 -- and admin panel, so there are no insert/update policies here.
+drop policy if exists "purchases are readable by their buyer" on public.purchases;
 create policy "purchases are readable by their buyer"
   on public.purchases for select
   using (lower(coalesce(auth.jwt() ->> 'email', '')) = buyer_email);

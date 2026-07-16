@@ -25,7 +25,7 @@ export default async function RecipesIndexPage({
 
   const access = await getAccessStatus();
   if (!access.hasAccess) {
-    return <RecipesLanding locale={locale} />;
+    return <RecipesLanding locale={locale} access={access} />;
   }
 
   const t = await getTranslations({ locale, namespace: "recipesIndex" });

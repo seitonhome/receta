@@ -3,6 +3,7 @@ import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/lib/recipes/types";
 import { recipes, getRecipe, getRecipeContent } from "@/lib/recipes/data";
 import { RecipePlate } from "@/components/recipe-plate";
+import type { AccessStatus } from "@/lib/access/purchase-status";
 
 const CATEGORY_COUNTS = {
   entrada: recipes.filter((r) => r.category === "entrada").length,
@@ -13,11 +14,18 @@ const CATEGORY_COUNTS = {
 
 const SAMPLE_SLUG = "salmon-vapor-eneldo-pure-coliflor";
 
-export async function RecipesLanding({ locale }: { locale: string }) {
+export async function RecipesLanding({
+  locale,
+  access,
+}: {
+  locale: string;
+  access: AccessStatus;
+}) {
   const t = await getTranslations({ locale, namespace: "landing" });
   const tRecipe = await getTranslations({ locale, namespace: "recipe" });
 
   const hotmartUrl = process.env.NEXT_PUBLIC_HOTMART_URL;
+  const signedInNoAccess = access.authenticated;
   const sample = getRecipe(SAMPLE_SLUG)!;
   const { content: sampleContent } = getRecipeContent(sample, locale as Locale);
 
@@ -70,13 +78,24 @@ export async function RecipesLanding({ locale }: { locale: string }) {
               {t("ctaBuySoon")}
             </span>
           )}
-          <Link
-            href="/ingresar"
-            className="inline-flex items-center rounded-full border border-line px-6 py-3 text-sm font-medium text-cacao transition-colors hover:border-sage"
-          >
-            {t("ctaSignIn")}
-          </Link>
+          {!signedInNoAccess && (
+            <Link
+              href="/ingresar"
+              className="inline-flex items-center rounded-full border border-line px-6 py-3 text-sm font-medium text-cacao transition-colors hover:border-sage"
+            >
+              {t("ctaSignIn")}
+            </Link>
+          )}
         </div>
+
+        {signedInNoAccess && (
+          <div className="mx-auto mt-6 max-w-md rounded-xl border border-terracotta bg-terracotta-tint px-4 py-3 text-left">
+            <p className="text-sm font-semibold text-terracotta">{t("signedInNoAccessTitle")}</p>
+            <p className="mt-1 text-xs text-cacao-soft">
+              {t.raw("signedInNoAccessBody").replace("{email}", access.email ?? "")}
+            </p>
+          </div>
+        )}
 
         <div className="mx-auto mt-14 grid max-w-lg grid-cols-2 gap-6 border-t border-line pt-8 sm:grid-cols-4">
           <div>
@@ -296,13 +315,23 @@ export async function RecipesLanding({ locale }: { locale: string }) {
                 {t("ctaBuySoon")}
               </span>
             )}
-            <Link
-              href="/ingresar"
-              className="inline-flex items-center rounded-full border border-cream/25 px-6 py-3 text-sm font-medium text-cream transition-colors hover:border-cream/50"
-            >
-              {t("ctaSignIn")}
-            </Link>
+            {!signedInNoAccess && (
+              <Link
+                href="/ingresar"
+                className="inline-flex items-center rounded-full border border-cream/25 px-6 py-3 text-sm font-medium text-cream transition-colors hover:border-cream/50"
+              >
+                {t("ctaSignIn")}
+              </Link>
+            )}
           </div>
+          {signedInNoAccess && (
+            <div className="mx-auto mt-6 max-w-md rounded-xl border border-cream/25 bg-cream/5 px-4 py-3 text-left">
+              <p className="text-sm font-semibold text-cream">{t("signedInNoAccessTitle")}</p>
+              <p className="mt-1 text-xs text-cream/70">
+                {t.raw("signedInNoAccessBody").replace("{email}", access.email ?? "")}
+              </p>
+            </div>
+          )}
         </div>
       </section>
     </div>

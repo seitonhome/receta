@@ -145,7 +145,9 @@
     "faq4Q": "¿Sirve si tengo una condición médica o alergia?",
     "faq4A": "Cada receta declara alérgenos y ofrece alternativas. El producto no sustituye la orientación de un profesional de la salud.",
     "closingTitle": "100 recetas. Tres idiomas. Un principio simple.",
-    "closingBody": "Accede con el mismo correo que usaste en tu compra de Hotmart."
+    "closingBody": "Accede con el mismo correo que usaste en tu compra de Hotmart.",
+    "signedInNoAccessTitle": "Ya iniciaste sesión, pero no vemos una compra activa",
+    "signedInNoAccessBody": "Estás conectado como {email}. Si compraste con otro correo, cierra sesión y vuelve a entrar con ese. Si compraste con este mismo correo y sigue sin aparecer, escríbenos a soporte."
   },
   "footer": {
     "note": "Comidas que te Cuidan — Meals that Care — Des Repas qui Prennent Soin."
