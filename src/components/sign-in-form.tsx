@@ -1,7 +1,12 @@
 "use client";
 
-import { useActionState } from "react";
-import { requestMagicLink, type SignInState } from "@/app/[locale]/ingresar/actions";
+import { useActionState, useState } from "react";
+import {
+  requestMagicLink,
+  verifyEmailCode,
+  type SignInState,
+  type VerifyState,
+} from "@/app/[locale]/ingresar/actions";
 
 type Labels = {
   emailLabel: string;
@@ -11,35 +16,85 @@ type Labels = {
   sentTitle: string;
   sentBody: string;
   useSameEmail: string;
+  codeLabel: string;
+  codePlaceholder: string;
+  codeSubmit: string;
+  codeVerifying: string;
+  changeEmail: string;
+  resend: string;
 };
 
-const initialState: SignInState = { status: "idle" };
+const initialSignInState: SignInState = { status: "idle" };
+const initialVerifyState: VerifyState = { status: "idle" };
 
-export function SignInForm({
-  locale,
-  next,
-  labels,
-}: {
-  locale: string;
-  next: string;
-  labels: Labels;
-}) {
-  const [state, formAction, isPending] = useActionState(requestMagicLink, initialState);
+export function SignInForm({ next, labels }: { next: string; labels: Labels }) {
+  const [signInState, signInAction, isSending] = useActionState(
+    requestMagicLink,
+    initialSignInState
+  );
+  const [verifyState, verifyAction, isVerifying] = useActionState(
+    verifyEmailCode,
+    initialVerifyState
+  );
+  const [resendKey, setResendKey] = useState(0);
 
-  if (state.status === "sent") {
+  if (signInState.status === "sent") {
+    const email = signInState.message ?? "";
     return (
-      <div className="rounded-xl border border-sage bg-sage-tint p-5">
-        <p className="font-display text-lg font-semibold text-sage-deep">{labels.sentTitle}</p>
-        <p className="mt-1.5 text-sm text-cacao-soft">
-          {labels.sentBody.replace("{email}", state.message ?? "")}
-        </p>
+      <div className="flex flex-col gap-4">
+        <div className="rounded-xl border border-sage bg-sage-tint p-5">
+          <p className="font-display text-lg font-semibold text-sage-deep">{labels.sentTitle}</p>
+          <p className="mt-1.5 text-sm text-cacao-soft">
+            {labels.sentBody.replace("{email}", email)}
+          </p>
+        </div>
+
+        <form action={verifyAction} className="flex flex-col gap-3">
+          <input type="hidden" name="email" value={email} />
+          <input type="hidden" name="next" value={next} />
+
+          <label className="text-xs font-semibold uppercase tracking-wide text-cacao-soft">
+            {labels.codeLabel}
+          </label>
+          <input
+            type="text"
+            name="token"
+            inputMode="numeric"
+            autoComplete="one-time-code"
+            maxLength={6}
+            required
+            placeholder={labels.codePlaceholder}
+            className="rounded-lg border border-line bg-cream px-3.5 py-2.5 text-center text-lg tracking-[0.4em] text-cacao outline-none focus:border-sage"
+          />
+
+          {verifyState.status === "error" && (
+            <p className="rounded-lg border border-terracotta bg-terracotta-tint px-3 py-2 text-xs text-terracotta">
+              {verifyState.message}
+            </p>
+          )}
+
+          <button
+            type="submit"
+            disabled={isVerifying}
+            className="mt-1 rounded-full bg-cacao px-5 py-2.5 text-sm font-medium text-cream transition-opacity hover:opacity-90 disabled:opacity-60"
+          >
+            {isVerifying ? labels.codeVerifying : labels.codeSubmit}
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setResendKey((k) => k + 1)}
+            className="text-xs text-cacao-soft underline-offset-2 hover:underline"
+          >
+            {labels.changeEmail}
+          </button>
+        </form>
       </div>
     );
   }
 
   return (
-    <form action={formAction} className="flex flex-col gap-3">
-      <input type="hidden" name="locale" value={locale} />
+    <form action={signInAction} key={resendKey} className="flex flex-col gap-3">
       <input type="hidden" name="next" value={next} />
 
       <label className="text-xs font-semibold uppercase tracking-wide text-cacao-soft">
@@ -54,18 +109,18 @@ export function SignInForm({
       />
       <p className="text-xs text-cacao-soft">{labels.useSameEmail}</p>
 
-      {state.status === "error" && (
+      {signInState.status === "error" && (
         <p className="rounded-lg border border-terracotta bg-terracotta-tint px-3 py-2 text-xs text-terracotta">
-          {state.message}
+          {signInState.message}
         </p>
       )}
 
       <button
         type="submit"
-        disabled={isPending}
+        disabled={isSending}
         className="mt-1 rounded-full bg-cacao px-5 py-2.5 text-sm font-medium text-cream transition-opacity hover:opacity-90 disabled:opacity-60"
       >
-        {isPending ? labels.sending : labels.submit}
+        {isSending ? labels.sending : labels.submit}
       </button>
     </form>
   );

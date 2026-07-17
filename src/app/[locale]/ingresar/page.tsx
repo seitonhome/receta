@@ -35,7 +35,6 @@ export default async function SignInPage({
 
       <div className="mt-6">
         <SignInForm
-          locale={locale}
           next={next ?? `/${locale}/recetas`}
           labels={{
             emailLabel: t("emailLabel"),
@@ -45,6 +44,12 @@ export default async function SignInPage({
             sentTitle: t("sentTitle"),
             sentBody: t.raw("sentBody"),
             useSameEmail: t("useSameEmail"),
+            codeLabel: t("codeLabel"),
+            codePlaceholder: t("codePlaceholder"),
+            codeSubmit: t("codeSubmit"),
+            codeVerifying: t("codeVerifying"),
+            changeEmail: t("changeEmail"),
+            resend: t("resend"),
           }}
         />
       </div>
