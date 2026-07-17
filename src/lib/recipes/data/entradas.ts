@@ -2,7 +2,7 @@ import type { Recipe } from "../types";
 
 export const entradas: Recipe[] = [
   {
-    "slug": "tostas-garbanzo-yogur-limon",
+    "slug": "tostadas-garbanzo-yogur-limon",
     "category": "entrada",
     "baseServings": 4,
     "costPerServing": 4500,
@@ -14,14 +14,14 @@ export const entradas: Recipe[] = [
       "#EFE1C4"
     ],
     "imageAlt": {
-      "es": "Cuatro tostas de pan integral con garbanzo especiado, yogur de limón y perejil fresco",
+      "es": "Cuatro tostadas de pan integral con garbanzo especiado, yogur de limón y perejil fresco",
       "en": "Four whole-wheat toasts with spiced chickpea, lemon yogurt and fresh parsley",
       "fr": "Quatre tartines de pain complet au pois chiche épicé, yaourt citronné et persil frais"
     },
     "content": {
       "es": {
         "eyebrow": "Entrada / Tapa",
-        "title": "Tostas de garbanzo especiado y yogur de limón",
+        "title": "Tostadas de garbanzo especiado y yogur de limón",
         "blurb": "Una tapa que se prepara en menos de 20 minutos con ingredientes que probablemente ya tienes en casa. El garbanzo aporta fibra y proteína vegetal, y el yogur de limón le da frescura.",
         "cuisine": "Inspiración: mediterránea",
         "prep": "15 min",
@@ -93,7 +93,7 @@ export const entradas: Recipe[] = [
           "Espolvorea pimentón ahumado, perejil y el resto del aceite antes de servir."
         ],
         "tips": "Si el garbanzo queda seco al machacarlo, agrega una cucharadita de aquafaba para una textura más cremosa.",
-        "mistakes": "No tuestes el pan con mucha anticipación: pierde crocancia. No satures la tosta, dificulta comerla en un bocado.",
+        "mistakes": "No tuestes el pan con mucha anticipación: pierde crocancia. No satures la tostada, dificulta comerla en un bocado.",
         "substitutions": "Garbanzo por frijol blanco o lenteja; pan integral por centeno o sin gluten; pimentón ahumado por dulce.",
         "storage": "Mezcla y yogur por separado, herméticos, hasta 3 días en refrigeración. No congelar. Se sirve fría/templada, sin recalentado.",
         "pairing": "Ensalada verde con limón, o como parte de una mesa de tapas con vegetales crudos.",
@@ -2509,7 +2509,7 @@ export const entradas: Recipe[] = [
         "mistakes": "No licúes la sopa hirviendo a máxima potencia en una licuadora cerrada: el vapor puede levantar la tapa. Deja enfriar unos minutos o licúa en tandas pequeñas.",
         "substitutions": "Calabaza por zanahoria o batata; leche de coco por crema de leche o leche evaporada baja en grasa.",
         "storage": "Hasta 4 días refrigerada en envase hermético. Se congela hasta 3 meses; descongela en la nevera y calienta a fuego bajo, revolviendo.",
-        "pairing": "Pan integral tostado o unas tostas de garbanzo y limón para hacer de esta crema una entrada más completa.",
+        "pairing": "Pan integral tostado o unas tostadas de garbanzo y limón para hacer de esta crema una entrada más completa.",
         "versions": "Económica: usa agua con un cubo de caldo en vez de caldo líquido. Ya es una receta vegetariana; para vegana, confirma que el caldo no contenga grasa animal.",
         "allergen": "No contiene alérgenos frecuentes en su forma base.",
         "nutrition": [

@@ -1,4 +1,4 @@
-tostas-garbanzo-yogur-limon
+tostadas-garbanzo-yogur-limon
 ceviche-palmitos-aguacate
 rollitos-papel-arroz-vegetales-mani
 croquetas-atun-horno-salsa-yogur
@@ -47,7 +47,7 @@ tacos-tofu-pastor-pina
 tempeh-plancha-arroz-integral-vegetales-asados
 bowl-mediterraneo-garbanzo-quinoa-vegetales-asados
 pasta-integral-tomate-atun-aceitunas
-bowl-mexicano-arroz-frijol-negro-elote-pico-gallo
+bowl-mexicano-arroz-frijol-negro-mazorca-pico-gallo
 salmon-vapor-eneldo-pure-coliflor
 trucha-horno-esparragos-limon
 tilapia-vapor-citricos-vegetales

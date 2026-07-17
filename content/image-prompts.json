@@ -1,10 +1,10 @@
 [
   {
-    "slug": "tostas-garbanzo-yogur-limon",
+    "slug": "tostadas-garbanzo-yogur-limon",
     "category": "entrada",
-    "prompt": "Editorial food photography style illustration of Tostas de garbanzo especiado y yogur de limón (appetizer/starter), featuring Garbanzos cocidos escurridos, Pan integral en rebanadas, Yogur griego natural sin azúcar, Jugo de limón, styled with warm natural light, on ceramic tableware with a linen napkin in soft focus background, shallow depth of field, a small appetizer portion, realistic and appetizing, no text, no hands, no logos.",
+    "prompt": "Editorial food photography style illustration of Tostadas de garbanzo especiado y yogur de limón (appetizer/starter), featuring Garbanzos cocidos escurridos, Pan integral en rebanadas, Yogur griego natural sin azúcar, Jugo de limón, styled with warm natural light, on ceramic tableware with a linen napkin in soft focus background, shallow depth of field, a small appetizer portion, realistic and appetizing, no text, no hands, no logos.",
     "alt": {
-      "es": "Cuatro tostas de pan integral con garbanzo especiado, yogur de limón y perejil fresco",
+      "es": "Cuatro tostadas de pan integral con garbanzo especiado, yogur de limón y perejil fresco",
       "en": "Four whole-wheat toasts with spiced chickpea, lemon yogurt and fresh parsley",
       "fr": "Quatre tartines de pain complet au pois chiche épicé, yaourt citronné et persil frais"
     }
@@ -490,11 +490,11 @@
     }
   },
   {
-    "slug": "bowl-mexicano-arroz-frijol-negro-elote-pico-gallo",
+    "slug": "bowl-mexicano-arroz-frijol-negro-mazorca-pico-gallo",
     "category": "almuerzo",
-    "prompt": "Editorial food photography style illustration of Bowl mexicano de arroz, frijol negro, elote y pico de gallo (hearty lunch), featuring Arroz blanco, Frijoles negros cocidos, Comino molido, Aceite de oliva, styled with warm natural light, on ceramic tableware with a linen napkin in soft focus background, shallow depth of field, a generous, hearty lunch portion, realistic and appetizing, no text, no hands, no logos.",
+    "prompt": "Editorial food photography style illustration of Bowl mexicano de arroz, frijol negro, mazorca y pico de gallo (hearty lunch), featuring Arroz blanco, Frijoles negros cocidos, Comino molido, Aceite de oliva, styled with warm natural light, on ceramic tableware with a linen napkin in soft focus background, shallow depth of field, a generous, hearty lunch portion, realistic and appetizing, no text, no hands, no logos.",
     "alt": {
-      "es": "Bowl con arroz, frijoles negros, elote y pico de gallo fresco",
+      "es": "Bowl con arroz, frijoles negros, mazorca y pico de gallo fresco",
       "en": "Bowl with rice, black beans, corn and fresh pico de gallo",
       "fr": "Bol de riz, haricots noirs, maïs et pico de gallo frais"
     }

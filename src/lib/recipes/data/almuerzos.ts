@@ -14029,7 +14029,7 @@ export const almuerzos: Recipe[] = [
     }
   },
   {
-    "slug": "bowl-mexicano-arroz-frijol-negro-elote-pico-gallo",
+    "slug": "bowl-mexicano-arroz-frijol-negro-mazorca-pico-gallo",
     "category": "almuerzo",
     "baseServings": 4,
     "costPerServing": 5400,
@@ -14041,15 +14041,15 @@ export const almuerzos: Recipe[] = [
       "#C9502F"
     ],
     "imageAlt": {
-      "es": "Bowl con arroz, frijoles negros, elote y pico de gallo fresco",
+      "es": "Bowl con arroz, frijoles negros, mazorca y pico de gallo fresco",
       "en": "Bowl with rice, black beans, corn and fresh pico de gallo",
       "fr": "Bol de riz, haricots noirs, maïs et pico de gallo frais"
     },
     "content": {
       "es": {
         "eyebrow": "Almuerzo",
-        "title": "Bowl mexicano de arroz, frijol negro, elote y pico de gallo",
-        "blurb": "Un bowl fresco y colorido con arroz, frijoles negros sazonados, elote salteado y un pico de gallo recién hecho. Ligero de preparar, pesado de satisfacer.",
+        "title": "Bowl mexicano de arroz, frijol negro, mazorca y pico de gallo",
+        "blurb": "Un bowl fresco y colorido con arroz, frijoles negros sazonados, mazorca salteada y un pico de gallo recién hecho. Ligero de preparar, pesado de satisfacer.",
         "cuisine": "Inspiración: cocina mexicana",
         "prep": "20 min",
         "cook": "20 min",
@@ -14077,7 +14077,7 @@ export const almuerzos: Recipe[] = [
             "unit": "cdas"
           },
           {
-            "name": "Granos de elote (frescos o congelados)",
+            "name": "Granos de mazorca (frescos o congelados)",
             "qty": 300,
             "unit": "g"
           },
@@ -14118,17 +14118,17 @@ export const almuerzos: Recipe[] = [
         "steps": [
           "Cocina el arroz según las instrucciones del paquete.",
           "Calienta los frijoles negros en una olla pequeña con el comino y sal; machaca ligeramente si prefieres textura más cremosa.",
-          "Calienta el aceite en una sartén a fuego medio-alto y saltea el elote 5-6 min hasta que tome un poco de color dorado.",
+          "Calienta el aceite en una sartén a fuego medio-alto y saltea la mazorca 5-6 min hasta que tome un poco de color dorado.",
           "Mezcla el tomate, la cebolla morada, la mitad del cilantro, la mitad del jugo de limón y sal para el pico de gallo.",
-          "Arma los bowls con arroz de base, frijoles, elote salteado, pico de gallo y aguacate.",
+          "Arma los bowls con arroz de base, frijoles, mazorca salteada, pico de gallo y aguacate.",
           "Rocía con el jugo de limón restante, espolvorea el cilantro que sobró y el queso fresco si lo usas."
         ],
         "tips": "Prepara el pico de gallo justo antes de servir: el tomate suelta agua si reposa demasiado tiempo con sal.",
-        "mistakes": "No cocines el elote de más: unos minutos a fuego alto bastan para dorarlo sin que quede duro o reseco.",
+        "mistakes": "No cocines la mazorca de más: unos minutos a fuego alto bastan para dorarla sin que quede dura o reseca.",
         "substitutions": "Arroz blanco por arroz integral o quinoa; queso fresco por queso costeño o se puede omitir; frijoles negros por frijoles pintos.",
         "storage": "Los componentes se conservan hasta 4 días refrigerados por separado. El pico de gallo se disfruta mejor fresco, hasta 2 días.",
         "pairing": "Totopos de maíz horneados para acompañar y dar crocancia extra.",
-        "versions": "Vegana: omite el queso fresco. Para niños: sirve el elote sin comino, solo con un poco de sal.",
+        "versions": "Vegana: omite el queso fresco. Para niños: sirve la mazorca sin comino, solo con un poco de sal.",
         "allergen": "Contiene lácteos si usas queso fresco. Ver sustituciones para versión vegana.",
         "nutrition": [
           [
@@ -14161,7 +14161,7 @@ export const almuerzos: Recipe[] = [
           ]
         ],
         "nutriSource": "Fuente: USDA FoodData Central. Estimación — varía según si se incluye queso fresco.",
-        "costStores": "Frijoles, arroz y elote en plaza de mercado o tienda de barrio.",
+        "costStores": "Frijoles, arroz y mazorca en plaza de mercado o tienda de barrio.",
         "costRefLocation": "Bogotá, Colombia",
         "tags": [
           "Vegetariana",

@@ -4,10 +4,10 @@ Generados a partir de los datos estructurados de cada receta (título, ingredien
 
 ## Entradas y tapas (15)
 
-### Tostas de garbanzo especiado y yogur de limón
-- **slug**: `tostas-garbanzo-yogur-limon`
-- **prompt**: Editorial food photography style illustration of Tostas de garbanzo especiado y yogur de limón (appetizer/starter), featuring Garbanzos cocidos escurridos, Pan integral en rebanadas, Yogur griego natural sin azúcar, Jugo de limón, styled with warm natural light, on ceramic tableware with a linen napkin in soft focus background, shallow depth of field, a small appetizer portion, realistic and appetizing, no text, no hands, no logos.
-- **alt (es)**: Cuatro tostas de pan integral con garbanzo especiado, yogur de limón y perejil fresco
+### Tostadas de garbanzo especiado y yogur de limón
+- **slug**: `tostadas-garbanzo-yogur-limon`
+- **prompt**: Editorial food photography style illustration of Tostadas de garbanzo especiado y yogur de limón (appetizer/starter), featuring Garbanzos cocidos escurridos, Pan integral en rebanadas, Yogur griego natural sin azúcar, Jugo de limón, styled with warm natural light, on ceramic tableware with a linen napkin in soft focus background, shallow depth of field, a small appetizer portion, realistic and appetizing, no text, no hands, no logos.
+- **alt (es)**: Cuatro tostadas de pan integral con garbanzo especiado, yogur de limón y perejil fresco
 
 ### Ceviche de palmitos y aguacate
 - **slug**: `ceviche-palmitos-aguacate`
@@ -251,10 +251,10 @@ Generados a partir de los datos estructurados de cada receta (título, ingredien
 - **prompt**: Editorial food photography style illustration of Pasta integral con salsa de tomate, atún y aceitunas (hearty lunch), featuring Pasta integral, Atún en agua, Tomate triturado, Aceitunas negras, styled with warm natural light, on ceramic tableware with a linen napkin in soft focus background, shallow depth of field, a generous, hearty lunch portion, realistic and appetizing, no text, no hands, no logos.
 - **alt (es)**: Pasta integral con salsa de tomate, atún desmenuzado y aceitunas negras en un plato
 
-### Bowl mexicano de arroz, frijol negro, elote y pico de gallo
-- **slug**: `bowl-mexicano-arroz-frijol-negro-elote-pico-gallo`
-- **prompt**: Editorial food photography style illustration of Bowl mexicano de arroz, frijol negro, elote y pico de gallo (hearty lunch), featuring Arroz blanco, Frijoles negros cocidos, Comino molido, Aceite de oliva, styled with warm natural light, on ceramic tableware with a linen napkin in soft focus background, shallow depth of field, a generous, hearty lunch portion, realistic and appetizing, no text, no hands, no logos.
-- **alt (es)**: Bowl con arroz, frijoles negros, elote y pico de gallo fresco
+### Bowl mexicano de arroz, frijol negro, mazorca y pico de gallo
+- **slug**: `bowl-mexicano-arroz-frijol-negro-mazorca-pico-gallo`
+- **prompt**: Editorial food photography style illustration of Bowl mexicano de arroz, frijol negro, mazorca y pico de gallo (hearty lunch), featuring Arroz blanco, Frijoles negros cocidos, Comino molido, Aceite de oliva, styled with warm natural light, on ceramic tableware with a linen napkin in soft focus background, shallow depth of field, a generous, hearty lunch portion, realistic and appetizing, no text, no hands, no logos.
+- **alt (es)**: Bowl con arroz, frijoles negros, mazorca y pico de gallo fresco
 
 ## Cenas (35)
 
