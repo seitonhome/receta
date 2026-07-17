@@ -7,6 +7,7 @@ export function LaunchOffer({
 }: {
   labels: {
     eyebrow: string;
+    savings: string;
     returnsNote: string;
     days: string;
     hours: string;
@@ -17,23 +18,19 @@ export function LaunchOffer({
 }) {
   return (
     <div
-      className={`mx-auto flex max-w-md flex-col items-center gap-4 rounded-2xl border px-6 py-5 text-center ${
+      className={`mx-auto flex max-w-md flex-col items-center gap-4 rounded-2xl border px-6 py-6 text-center ${
         compact
-          ? "border-cream/25 bg-cream/5"
-          : "border-terracotta/40 bg-terracotta-tint"
+          ? "border-cream/20 bg-cream/5"
+          : "border-terracotta/30 bg-gradient-to-b from-terracotta-tint to-cream shadow-sm"
       }`}
     >
-      <p
-        className={`text-xs font-semibold uppercase tracking-wide ${
-          compact ? "text-cream/80" : "text-terracotta"
-        }`}
-      >
+      <span className="inline-flex items-center rounded-full bg-terracotta px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-cream">
         {labels.eyebrow}
-      </p>
+      </span>
 
       <p className="flex items-baseline justify-center gap-2.5">
         <span
-          className={`font-display text-4xl font-semibold tabular-nums ${
+          className={`font-display text-5xl font-semibold tabular-nums ${
             compact ? "text-cream" : "text-cacao"
           }`}
         >
@@ -50,6 +47,10 @@ export function LaunchOffer({
           USD
         </span>
       </p>
+
+      <span className="inline-flex items-center rounded-full bg-sage-deep px-3 py-1 text-[11px] font-semibold text-cream">
+        {labels.savings}
+      </span>
 
       <CountdownTimer
         deadline={LAUNCH_OFFER_DEADLINE}

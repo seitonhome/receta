@@ -4,6 +4,7 @@ import type { Locale } from "@/lib/recipes/types";
 import { recipes, getRecipe, getRecipeContent } from "@/lib/recipes/data";
 import { RecipePlate } from "@/components/recipe-plate";
 import { LaunchOffer } from "@/components/launch-offer";
+import { LAUNCH_PRICE_USD, REGULAR_PRICE_USD } from "@/lib/launch-offer";
 import type { AccessStatus } from "@/lib/access/purchase-status";
 
 const CATEGORY_COUNTS = {
@@ -54,6 +55,7 @@ export async function RecipesLanding({
 
   const offerLabels = {
     eyebrow: t("offerEyebrow"),
+    savings: t("offerSavings", { amount: REGULAR_PRICE_USD - LAUNCH_PRICE_USD }),
     returnsNote: t("offerReturnsNote"),
     days: t("offerDays"),
     hours: t("offerHours"),
