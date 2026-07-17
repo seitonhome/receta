@@ -55,7 +55,7 @@
     "favoriteError": "Couldn't save that. Try again.",
     "shareSoon": "In the real app: generates a link to share",
     "printSoon": "In the real app: opens a print-ready view",
-    "addToShoppingList": "Add to shopping list",
+    "addToShoppingList": "Add selected to list",
     "addedToShoppingList": "Ingredients added to your shopping list"
   },
   "auth": {

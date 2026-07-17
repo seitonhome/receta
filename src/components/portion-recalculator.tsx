@@ -36,6 +36,7 @@ export function PortionRecalculator({
   const [customValue, setCustomValue] = useState("");
   const [isPending, startTransition] = useTransition();
   const [toast, setToast] = useState<string | null>(null);
+  const [selected, setSelected] = useState(() => new Set(ingredients.map((i) => i.name)));
 
   const ratio = servings / baseServings;
   const totalCost = costPerServing * servings;
@@ -60,10 +61,21 @@ export function PortionRecalculator({
     if (n > 0 && n <= 30) setServings(n);
   }
 
+  function toggleSelected(name: string) {
+    setSelected((prev) => {
+      const next = new Set(prev);
+      if (next.has(name)) next.delete(name);
+      else next.add(name);
+      return next;
+    });
+  }
+
   function onAddToList() {
+    const toAdd = scaled.filter((ing) => selected.has(ing.name));
+    if (toAdd.length === 0) return;
     startTransition(async () => {
       const result = await addIngredientsToList(
-        scaled.map((ing) => ({ name: ing.name, quantity: ing.scaledQty, unit: ing.unit })),
+        toAdd.map((ing) => ({ name: ing.name, quantity: ing.scaledQty, unit: ing.unit })),
         recipeSlug
       );
       setToast("error" in result ? null : labels.added);
@@ -111,19 +123,36 @@ export function PortionRecalculator({
         </h2>
       </div>
       <ul className="mt-3 flex flex-col gap-2">
-        {scaled.map((ing) => (
-          <li
-            key={ing.name}
-            className="flex gap-2 border-b border-dashed border-line pb-2 text-sm last:border-none"
-          >
-            <span className="min-w-[2.4em] font-semibold tabular-nums text-terracotta">
-              {formatQty(ing.scaledQty)}
-            </span>
-            <span className="text-cacao-soft">
-              {ing.unit} — <span className="text-cacao">{ing.name}</span>
-            </span>
-          </li>
-        ))}
+        {scaled.map((ing) => {
+          const isSelected = selected.has(ing.name);
+          return (
+            <li
+              key={ing.name}
+              className="flex items-center gap-2 border-b border-dashed border-line pb-2 text-sm last:border-none"
+            >
+              <button
+                type="button"
+                onClick={() => toggleSelected(ing.name)}
+                aria-pressed={isSelected}
+                className={`flex h-5 w-5 flex-none items-center justify-center rounded border text-[10px] transition-colors ${
+                  isSelected
+                    ? "border-sage bg-sage text-cream"
+                    : "border-line bg-cream text-transparent"
+                }`}
+              >
+                ✓
+              </button>
+              <span
+                className={`min-w-[2.4em] font-semibold tabular-nums text-terracotta ${!isSelected ? "opacity-50" : ""}`}
+              >
+                {formatQty(ing.scaledQty)}
+              </span>
+              <span className={`text-cacao-soft ${!isSelected ? "opacity-50" : ""}`}>
+                {ing.unit} — <span className="text-cacao">{ing.name}</span>
+              </span>
+            </li>
+          );
+        })}
       </ul>
       {ingredientsStatic && (
         <p className="mt-2 text-xs italic text-cacao-soft">{ingredientsStatic}</p>
@@ -134,7 +163,7 @@ export function PortionRecalculator({
         <button
           type="button"
           onClick={onAddToList}
-          disabled={isPending}
+          disabled={isPending || selected.size === 0}
           className="rounded-full border border-line bg-cream px-4 py-2 text-xs font-medium text-cacao transition-colors hover:border-sage disabled:opacity-60"
         >
           {labels.addToList}

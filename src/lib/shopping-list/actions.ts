@@ -117,6 +117,21 @@ export async function toggleListItem(id: string, checked: boolean) {
   revalidatePath(LIST_PATH, "page");
 }
 
+export async function updateListItemQuantity(id: string, quantity: number | null) {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) return;
+
+  await supabase
+    .from("shopping_list_items")
+    .update({ quantity })
+    .eq("id", id)
+    .eq("user_id", user.id);
+  revalidatePath(LIST_PATH, "page");
+}
+
 export async function removeListItem(id: string) {
   const supabase = await createClient();
   const {

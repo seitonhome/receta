@@ -55,7 +55,7 @@
     "favoriteError": "Impossible d'enregistrer. Réessayez.",
     "shareSoon": "Dans l'application réelle : génère un lien à partager",
     "printSoon": "Dans l'application réelle : ouvre une vue prête à imprimer",
-    "addToShoppingList": "Ajouter à la liste de courses",
+    "addToShoppingList": "Ajouter la sélection à la liste",
     "addedToShoppingList": "Ingrédients ajoutés à votre liste de courses"
   },
   "auth": {

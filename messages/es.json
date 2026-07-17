@@ -55,7 +55,7 @@
     "favoriteError": "No se pudo guardar. Intenta de nuevo.",
     "shareSoon": "En la app real: genera un enlace para compartir",
     "printSoon": "En la app real: abre una vista lista para imprimir",
-    "addToShoppingList": "Agregar a la lista de compras",
+    "addToShoppingList": "Agregar seleccionados a la lista",
     "addedToShoppingList": "Ingredientes agregados a tu lista de compras"
   },
   "auth": {
