@@ -26,6 +26,11 @@ export const routing = defineRouting({
       en: "/favorites",
       fr: "/favoris",
     },
+    "/lista-de-compras": {
+      es: "/lista-de-compras",
+      en: "/shopping-list",
+      fr: "/liste-de-courses",
+    },
   },
 });
 

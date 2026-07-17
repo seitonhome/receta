@@ -25,7 +25,9 @@ export async function SiteHeader() {
               <Link href="/recetas" className="hover:text-cacao">
                 {t("recipes")}
               </Link>
-              <span className="hidden opacity-60 sm:inline">{t("shoppingList")}</span>
+              <Link href="/lista-de-compras" className="hidden hover:text-cacao sm:inline">
+                {t("shoppingList")}
+              </Link>
               <Link href="/favoritos" className="hidden hover:text-cacao sm:inline">
                 {t("favorites")}
               </Link>

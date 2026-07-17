@@ -49,7 +49,14 @@
     "tags": "Étiquettes",
     "backToList": "Retour aux recettes",
     "portionNote": "Recalcule les ingrédients et le coût total. Les valeurs nutritionnelles sont par portion et ne changent pas.",
-    "onlyInSpanish": "La traduction professionnelle de cette recette dans cette langue est encore en cours."
+    "onlyInSpanish": "La traduction professionnelle de cette recette dans cette langue est encore en cours.",
+    "favoriteSaved": "Ajoutée aux favoris",
+    "favoriteRemoved": "Retirée des favoris",
+    "favoriteError": "Impossible d'enregistrer. Réessayez.",
+    "shareSoon": "Dans l'application réelle : génère un lien à partager",
+    "printSoon": "Dans l'application réelle : ouvre une vue prête à imprimer",
+    "addToShoppingList": "Ajouter à la liste de courses",
+    "addedToShoppingList": "Ingrédients ajoutés à votre liste de courses"
   },
   "auth": {
     "navSignIn": "Se connecter",
@@ -154,6 +161,28 @@
     "closingBody": "Connectez-vous avec le même courriel utilisé lors de votre achat sur Hotmart.",
     "signedInNoAccessTitle": "Vous êtes connecté(e), mais nous ne voyons pas d'achat actif",
     "signedInNoAccessBody": "Vous êtes connecté(e) en tant que {email}. Si vous avez acheté avec un autre courriel, déconnectez-vous et reconnectez-vous avec celui-ci. Si vous avez acheté avec ce même courriel et qu'il n'apparaît toujours pas, contactez le support."
+  },
+  "shoppingList": {
+    "title": "Liste de courses",
+    "subtitle": "Se combine automatiquement quand vous ajoutez le même ingrédient depuis plusieurs recettes.",
+    "emptyTitle": "Votre liste est vide",
+    "emptyBody": "Ajoutez des ingrédients depuis n'importe quelle recette avec le bouton \"Ajouter à la liste de courses\", ou écrivez quelque chose ci-dessous.",
+    "browseRecipes": "Explorer les recettes",
+    "catFrutasYVerduras": "Fruits et légumes",
+    "catProteinas": "Protéines",
+    "catLacteos": "Produits laitiers et alternatives",
+    "catGranosYCereales": "Céréales et grains",
+    "catLegumbres": "Légumineuses",
+    "catEspecias": "Épices",
+    "catDespensa": "Garde-manger",
+    "catCongelados": "Surgelés",
+    "catOtros": "Autres",
+    "namePlaceholder": "Ingrédient",
+    "quantityPlaceholder": "Qté",
+    "unitPlaceholder": "Unité",
+    "addManual": "Ajouter",
+    "clearChecked": "Retirer les articles achetés",
+    "removeItem": "Retirer"
   },
   "footer": {
     "note": "Comidas que te Cuidan — Meals that Care — Des Repas qui Prennent Soin."

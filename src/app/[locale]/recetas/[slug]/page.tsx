@@ -9,6 +9,7 @@ import { RecipeActions } from "@/components/recipe-actions";
 import { PortionRecalculator } from "@/components/portion-recalculator";
 import { Link, redirect } from "@/i18n/navigation";
 import { getAccessStatus } from "@/lib/access/purchase-status";
+import { isFavorited } from "@/lib/favorites/queries";
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
@@ -35,6 +36,7 @@ export default async function RecipeDetailPage({
 
   const { content, isFallback } = getRecipeContent(recipe, locale as Locale);
   const t = await getTranslations({ locale, namespace: "recipe" });
+  const favorited = await isFavorited(slug);
 
   const infoBlocks = [
     { label: t("tips"), value: content.tips },
@@ -64,7 +66,17 @@ export default async function RecipeDetailPage({
             <p className="text-xs font-semibold uppercase tracking-wide text-terracotta">
               {content.eyebrow}
             </p>
-            <RecipeActions />
+            <RecipeActions
+              slug={recipe.slug}
+              initialFavorited={favorited}
+              labels={{
+                favoriteSaved: t("favoriteSaved"),
+                favoriteRemoved: t("favoriteRemoved"),
+                favoriteError: t("favoriteError"),
+                shareSoon: t("shareSoon"),
+                printSoon: t("printSoon"),
+              }}
+            />
           </div>
           <h1 className="mt-1 font-display text-2xl font-semibold leading-tight tracking-tight text-balance sm:text-3xl">
             {content.title}
@@ -97,12 +109,19 @@ export default async function RecipeDetailPage({
 
       <div className="mt-10 grid grid-cols-1 gap-10 md:grid-cols-[0.85fr_1.15fr]">
         <PortionRecalculator
+          recipeSlug={recipe.slug}
           ingredients={content.ingredients}
           ingredientsStatic={content.ingredientsStatic}
           baseServings={recipe.baseServings}
           costPerServing={recipe.costPerServing}
           currency={recipe.costCurrency}
-          labels={{ servings: t("servings"), ingredients: t("ingredients"), note: t("portionNote") }}
+          labels={{
+            servings: t("servings"),
+            ingredients: t("ingredients"),
+            note: t("portionNote"),
+            addToList: t("addToShoppingList"),
+            added: t("addedToShoppingList"),
+          }}
         />
 
         <div>

@@ -1,35 +1,68 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useTransition } from "react";
+import { toggleFavorite } from "@/lib/favorites/actions";
 
-export function RecipeActions() {
-  const [saved, setSaved] = useState(false);
+type Labels = {
+  favoriteSaved: string;
+  favoriteRemoved: string;
+  favoriteError: string;
+  shareSoon: string;
+  printSoon: string;
+};
+
+export function RecipeActions({
+  slug,
+  initialFavorited,
+  labels,
+}: {
+  slug: string;
+  initialFavorited: boolean;
+  labels: Labels;
+}) {
+  const [saved, setSaved] = useState(initialFavorited);
+  const [isPending, startTransition] = useTransition();
   const [toast, setToast] = useState<string | null>(null);
 
   function flash(message: string) {
     setToast(message);
     window.clearTimeout((flash as unknown as { t?: number }).t);
-    (flash as unknown as { t?: number }).t = window.setTimeout(() => setToast(null), 2000);
+    (flash as unknown as { t?: number }).t = window.setTimeout(() => setToast(null), 2200);
+  }
+
+  function onFavoriteClick() {
+    const next = !saved;
+    setSaved(next); // optimistic
+    startTransition(async () => {
+      const result = await toggleFavorite(slug);
+      if ("error" in result) {
+        setSaved(!next); // roll back
+        flash(labels.favoriteError);
+        return;
+      }
+      setSaved(result.favorited);
+      flash(result.favorited ? labels.favoriteSaved : labels.favoriteRemoved);
+    });
   }
 
   return (
     <div className="relative flex gap-2">
       <button
         type="button"
-        onClick={() => {
-          setSaved((s) => !s);
-          flash(saved ? "Quitada de favoritos" : "Guardada en favoritos");
-        }}
-        title="Guardar como favorita"
-        className={`flex h-9 w-9 items-center justify-center rounded-full border text-base transition-colors ${
-          saved ? "border-terracotta bg-terracotta text-cream" : "border-line bg-cream-2 text-cacao-soft hover:text-cacao"
+        onClick={onFavoriteClick}
+        disabled={isPending}
+        title={labels.favoriteSaved}
+        className={`flex h-9 w-9 items-center justify-center rounded-full border text-base transition-colors disabled:opacity-70 ${
+          saved
+            ? "border-terracotta bg-terracotta text-cream"
+            : "border-line bg-cream-2 text-cacao-soft hover:text-cacao"
         }`}
       >
         {saved ? "♥" : "♡"}
       </button>
       <button
         type="button"
-        onClick={() => flash("En la app real: genera un enlace para compartir")}
+        onClick={() => flash(labels.shareSoon)}
         title="Compartir"
         className="flex h-9 w-9 items-center justify-center rounded-full border border-line bg-cream-2 text-cacao-soft hover:text-cacao"
       >
@@ -37,7 +70,7 @@ export function RecipeActions() {
       </button>
       <button
         type="button"
-        onClick={() => flash("En la app real: abre una vista lista para imprimir")}
+        onClick={() => flash(labels.printSoon)}
         title="Imprimir"
         className="flex h-9 w-9 items-center justify-center rounded-full border border-line bg-cream-2 text-cacao-soft hover:text-cacao"
       >

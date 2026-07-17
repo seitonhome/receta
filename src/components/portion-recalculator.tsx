@@ -1,10 +1,12 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useTransition } from "react";
 import type { Ingredient } from "@/lib/recipes/types";
 import { formatMoney, formatQty, scaleQty } from "@/lib/recipes/scale";
+import { addIngredientsToList } from "@/lib/shopping-list/actions";
 
 type Props = {
+  recipeSlug: string;
   ingredients: Ingredient[];
   ingredientsStatic?: string;
   baseServings: number;
@@ -14,10 +16,13 @@ type Props = {
     servings: string;
     ingredients: string;
     note: string;
+    addToList: string;
+    added: string;
   };
 };
 
 export function PortionRecalculator({
+  recipeSlug,
   ingredients,
   ingredientsStatic,
   baseServings,
@@ -28,6 +33,8 @@ export function PortionRecalculator({
   const presets = baseServings >= 9 ? [4, 6, 9, 12] : [1, 2, 4, 6, 8];
   const [servings, setServings] = useState(baseServings);
   const [customValue, setCustomValue] = useState("");
+  const [isPending, startTransition] = useTransition();
+  const [toast, setToast] = useState<string | null>(null);
 
   const ratio = servings / baseServings;
   const totalCost = costPerServing * servings;
@@ -50,6 +57,17 @@ export function PortionRecalculator({
     setCustomValue(v);
     const n = parseFloat(v);
     if (n > 0 && n <= 30) setServings(n);
+  }
+
+  function onAddToList() {
+    startTransition(async () => {
+      const result = await addIngredientsToList(
+        scaled.map((ing) => ({ name: ing.name, quantity: ing.scaledQty, unit: ing.unit })),
+        recipeSlug
+      );
+      setToast("error" in result ? null : labels.added);
+      window.setTimeout(() => setToast(null), 2500);
+    });
   }
 
   return (
@@ -86,9 +104,11 @@ export function PortionRecalculator({
         <p className="mt-2 text-xs text-cacao-soft">{labels.note}</p>
       </div>
 
-      <h2 className="mt-6 font-display text-lg italic font-medium text-sage-deep">
-        {labels.ingredients}
-      </h2>
+      <div className="mt-4 flex items-center gap-3">
+        <h2 className="font-display text-lg italic font-medium text-sage-deep">
+          {labels.ingredients}
+        </h2>
+      </div>
       <ul className="mt-3 flex flex-col gap-2">
         {scaled.map((ing) => (
           <li
@@ -108,12 +128,23 @@ export function PortionRecalculator({
         <p className="mt-2 text-xs italic text-cacao-soft">{ingredientsStatic}</p>
       )}
 
-      <p className="mt-4 text-sm text-cacao-soft">
-        <span className="font-display text-xl font-semibold text-cacao tabular-nums">
-          ${formatMoney(totalCost)}
-        </span>{" "}
-        {currency}
-      </p>
+      <div className="mt-4 flex items-center justify-between gap-3">
+        <p className="text-sm text-cacao-soft">
+          <span className="font-display text-xl font-semibold text-cacao tabular-nums">
+            ${formatMoney(totalCost)}
+          </span>{" "}
+          {currency}
+        </p>
+        <button
+          type="button"
+          onClick={onAddToList}
+          disabled={isPending}
+          className="rounded-full border border-line bg-cream px-4 py-2 text-xs font-medium text-cacao transition-colors hover:border-sage disabled:opacity-60"
+        >
+          {labels.addToList}
+        </button>
+      </div>
+      {toast && <p className="mt-2 text-right text-xs text-sage-deep">{toast}</p>}
     </div>
   );
 }

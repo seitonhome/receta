@@ -49,7 +49,14 @@
     "tags": "Etiquetas",
     "backToList": "Volver a las recetas",
     "portionNote": "Recalcula los ingredientes y el costo total. La información nutricional es por porción y no cambia.",
-    "onlyInSpanish": "La traducción profesional de esta receta a este idioma todavía está en proceso."
+    "onlyInSpanish": "La traducción profesional de esta receta a este idioma todavía está en proceso.",
+    "favoriteSaved": "Guardada en favoritos",
+    "favoriteRemoved": "Quitada de favoritos",
+    "favoriteError": "No se pudo guardar. Intenta de nuevo.",
+    "shareSoon": "En la app real: genera un enlace para compartir",
+    "printSoon": "En la app real: abre una vista lista para imprimir",
+    "addToShoppingList": "Agregar a la lista de compras",
+    "addedToShoppingList": "Ingredientes agregados a tu lista de compras"
   },
   "auth": {
     "navSignIn": "Iniciar sesión",
@@ -154,6 +161,28 @@
     "closingBody": "Accede con el mismo correo que usaste en tu compra de Hotmart.",
     "signedInNoAccessTitle": "Ya iniciaste sesión, pero no vemos una compra activa",
     "signedInNoAccessBody": "Estás conectado como {email}. Si compraste con otro correo, cierra sesión y vuelve a entrar con ese. Si compraste con este mismo correo y sigue sin aparecer, escríbenos a soporte."
+  },
+  "shoppingList": {
+    "title": "Lista de compras",
+    "subtitle": "Se combina automáticamente cuando agregas el mismo ingrediente desde varias recetas.",
+    "emptyTitle": "Tu lista está vacía",
+    "emptyBody": "Agrega ingredientes desde cualquier receta con el botón \"Agregar a la lista de compras\", o escribe algo suelto abajo.",
+    "browseRecipes": "Explorar recetas",
+    "catFrutasYVerduras": "Frutas y verduras",
+    "catProteinas": "Proteínas",
+    "catLacteos": "Lácteos y alternativas",
+    "catGranosYCereales": "Granos y cereales",
+    "catLegumbres": "Legumbres",
+    "catEspecias": "Especias",
+    "catDespensa": "Despensa",
+    "catCongelados": "Congelados",
+    "catOtros": "Otros",
+    "namePlaceholder": "Ingrediente",
+    "quantityPlaceholder": "Cant.",
+    "unitPlaceholder": "Unidad",
+    "addManual": "Agregar",
+    "clearChecked": "Quitar los ya comprados",
+    "removeItem": "Quitar"
   },
   "footer": {
     "note": "Comidas que te Cuidan — Meals that Care — Des Repas qui Prennent Soin."
