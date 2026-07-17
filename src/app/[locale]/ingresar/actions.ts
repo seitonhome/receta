@@ -61,8 +61,8 @@ export async function verifyEmailCode(
   const token = String(formData.get("token") ?? "").trim();
   const next = String(formData.get("next") ?? "/");
 
-  if (!/^\d{6}$/.test(token)) {
-    return { status: "error", message: "Escribe el código de 6 dígitos tal como llegó en el correo." };
+  if (!/^\d{4,10}$/.test(token)) {
+    return { status: "error", message: "Escribe el código tal como llegó en el correo, solo números." };
   }
 
   const supabase = await createClient();

@@ -61,10 +61,10 @@ export function SignInForm({ next, labels }: { next: string; labels: Labels }) {
             name="token"
             inputMode="numeric"
             autoComplete="one-time-code"
-            maxLength={6}
+            maxLength={10}
             required
             placeholder={labels.codePlaceholder}
-            className="rounded-lg border border-line bg-cream px-3.5 py-2.5 text-center text-lg tracking-[0.4em] text-cacao outline-none focus:border-sage"
+            className="rounded-lg border border-line bg-cream px-3.5 py-2.5 text-center text-lg tracking-[0.3em] text-cacao outline-none focus:border-sage"
           />
 
           {verifyState.status === "error" && (
