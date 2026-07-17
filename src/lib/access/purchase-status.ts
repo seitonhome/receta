@@ -37,14 +37,20 @@ export async function getAccessStatus(): Promise<AccessStatus> {
     .maybeSingle();
 
   // Best-effort: link this purchase to the account for admin/audit purposes.
-  // Never blocks or fails the access check -- RLS means a regular session
-  // can't write here anyway, so this needs the service-role client.
-  if (purchase && !purchase.user_id) {
-    createAdminClient()
-      .from("purchases")
-      .update({ user_id: user.id })
-      .eq("id", purchase.id)
-      .then(() => {});
+  // Must never block or fail the access check -- this needs the service-role
+  // key (RLS blocks a regular session from writing here), which is optional
+  // for everything else, so guard against it being unset and swallow any
+  // failure instead of letting it take down the page render.
+  if (purchase && !purchase.user_id && process.env.SUPABASE_SERVICE_ROLE_KEY) {
+    try {
+      createAdminClient()
+        .from("purchases")
+        .update({ user_id: user.id })
+        .eq("id", purchase.id)
+        .then(() => {});
+    } catch {
+      // Non-critical -- the access check below doesn't depend on this.
+    }
   }
 
   return { authenticated: true, hasAccess: Boolean(purchase), email };
