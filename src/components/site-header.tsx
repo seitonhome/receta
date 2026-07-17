@@ -1,6 +1,7 @@
 import { getLocale, getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { LanguageSwitcher } from "@/components/language-switcher";
+import { CountrySelector } from "@/components/country-selector";
 import { AccountMenu } from "@/components/account-menu";
 import { getAccessStatus } from "@/lib/access/purchase-status";
 
@@ -34,6 +35,7 @@ export async function SiteHeader() {
             </>
           )}
           <AccountMenu locale={locale} access={access} />
+          <CountrySelector />
           <LanguageSwitcher />
         </nav>
       </div>

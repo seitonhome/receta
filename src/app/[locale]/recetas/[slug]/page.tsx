@@ -10,6 +10,7 @@ import { PortionRecalculator } from "@/components/portion-recalculator";
 import { Link, redirect } from "@/i18n/navigation";
 import { getAccessStatus } from "@/lib/access/purchase-status";
 import { isFavorited } from "@/lib/favorites/queries";
+import { PriceDisplay } from "@/components/price-display";
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
@@ -110,11 +111,11 @@ export default async function RecipeDetailPage({
       <div className="mt-10 grid grid-cols-1 gap-10 md:grid-cols-[0.85fr_1.15fr]">
         <PortionRecalculator
           recipeSlug={recipe.slug}
+          locale={locale as Locale}
           ingredients={content.ingredients}
           ingredientsStatic={content.ingredientsStatic}
           baseServings={recipe.baseServings}
           costPerServing={recipe.costPerServing}
-          currency={recipe.costCurrency}
           labels={{
             servings: t("servings"),
             ingredients: t("ingredients"),
@@ -177,14 +178,11 @@ export default async function RecipeDetailPage({
 
         <div className="rounded-xl border border-line bg-cream-2 p-4">
           <p className="text-xs font-semibold uppercase tracking-wide text-cacao-soft">
-            {t("cost")}
+            {t("cost")} <span className="normal-case text-cacao-soft/80">({t("costPerServing")})</span>
           </p>
-          <p className="mt-1 font-display text-2xl font-semibold tabular-nums">
-            ${recipe.costPerServing.toLocaleString("es-CO")}{" "}
-            <span className="text-sm font-sans font-normal text-cacao-soft">
-              {recipe.costCurrency} {t("costPerServing")}
-            </span>
-          </p>
+          <div className="mt-1">
+            <PriceDisplay copAmount={recipe.costPerServing} locale={locale as Locale} />
+          </div>
           <p className="mt-2 text-xs text-cacao-soft">
             {content.costRefLocation} · {recipe.costDate}
           </p>

@@ -7,6 +7,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { CountryProvider } from "@/components/country-provider";
 import "../globals.css";
 
 const fraunces = Fraunces({
@@ -53,9 +54,11 @@ export default async function LocaleLayout({
     <html lang={locale} className={fraunces.variable}>
       <body className="min-h-screen bg-cream text-cacao font-sans antialiased flex flex-col">
         <NextIntlClientProvider messages={messages}>
-          <SiteHeader />
-          <main className="flex-1">{children}</main>
-          <SiteFooter />
+          <CountryProvider>
+            <SiteHeader />
+            <main className="flex-1">{children}</main>
+            <SiteFooter />
+          </CountryProvider>
         </NextIntlClientProvider>
       </body>
     </html>

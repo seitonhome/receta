@@ -1,17 +1,18 @@
 "use client";
 
 import { useMemo, useState, useTransition } from "react";
-import type { Ingredient } from "@/lib/recipes/types";
-import { formatMoney, formatQty, scaleQty } from "@/lib/recipes/scale";
+import type { Ingredient, Locale } from "@/lib/recipes/types";
+import { formatQty, scaleQty } from "@/lib/recipes/scale";
 import { addIngredientsToList } from "@/lib/shopping-list/actions";
+import { PriceDisplay } from "@/components/price-display";
 
 type Props = {
   recipeSlug: string;
+  locale: Locale;
   ingredients: Ingredient[];
   ingredientsStatic?: string;
   baseServings: number;
   costPerServing: number;
-  currency: string;
   labels: {
     servings: string;
     ingredients: string;
@@ -23,11 +24,11 @@ type Props = {
 
 export function PortionRecalculator({
   recipeSlug,
+  locale,
   ingredients,
   ingredientsStatic,
   baseServings,
   costPerServing,
-  currency,
   labels,
 }: Props) {
   const presets = baseServings >= 9 ? [4, 6, 9, 12] : [1, 2, 4, 6, 8];
@@ -129,12 +130,7 @@ export function PortionRecalculator({
       )}
 
       <div className="mt-4 flex items-center justify-between gap-3">
-        <p className="text-sm text-cacao-soft">
-          <span className="font-display text-xl font-semibold text-cacao tabular-nums">
-            ${formatMoney(totalCost)}
-          </span>{" "}
-          {currency}
-        </p>
+        <PriceDisplay copAmount={totalCost} locale={locale} size="md" />
         <button
           type="button"
           onClick={onAddToList}
