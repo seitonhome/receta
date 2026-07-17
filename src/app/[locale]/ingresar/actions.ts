@@ -66,13 +66,24 @@ export async function verifyEmailCode(
   }
 
   const supabase = await createClient();
-  const { error } = await supabase.auth.verifyOtp({ email, token, type: "email" });
 
-  if (error) {
-    return { status: "error", message: error.message };
+  // Supabase classifies the OTP token differently depending on the account's
+  // history (first-ever confirmation vs. a returning sign-in), and picking
+  // the wrong `type` here fails with the same generic "Token has expired or
+  // is invalid" regardless of the real cause. Try the types that can apply
+  // to an email-OTP sign-in, in order, instead of gambling on one.
+  const typesToTry = ["email", "signup", "magiclink"] as const;
+  let lastError: string | undefined;
+
+  for (const type of typesToTry) {
+    const { error } = await supabase.auth.verifyOtp({ email, token, type });
+    if (!error) {
+      redirect(next);
+    }
+    lastError = error.message;
   }
 
-  redirect(next);
+  return { status: "error", message: lastError };
 }
 
 export async function signOut() {
