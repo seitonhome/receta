@@ -3,6 +3,7 @@ import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/lib/recipes/types";
 import { recipes, getRecipe, getRecipeContent } from "@/lib/recipes/data";
 import { RecipePlate } from "@/components/recipe-plate";
+import { LaunchOffer } from "@/components/launch-offer";
 import type { AccessStatus } from "@/lib/access/purchase-status";
 
 const CATEGORY_COUNTS = {
@@ -51,6 +52,15 @@ export async function RecipesLanding({
     a: t(`faq${n}A` as "faq1A"),
   }));
 
+  const offerLabels = {
+    eyebrow: t("offerEyebrow"),
+    returnsNote: t("offerReturnsNote"),
+    days: t("offerDays"),
+    hours: t("offerHours"),
+    minutes: t("offerMinutes"),
+    seconds: t("offerSeconds"),
+  };
+
   return (
     <div>
       {/* HERO */}
@@ -63,7 +73,11 @@ export async function RecipesLanding({
         </h1>
         <p className="mx-auto mt-5 max-w-xl text-lg text-cacao-soft">{t("heroSubtitle")}</p>
 
-        <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <div className="mt-8">
+          <LaunchOffer labels={offerLabels} />
+        </div>
+
+        <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
           {hotmartUrl ? (
             <a
               href={hotmartUrl}
@@ -300,7 +314,12 @@ export async function RecipesLanding({
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="font-display text-2xl font-semibold sm:text-3xl">{t("closingTitle")}</h2>
           <p className="mx-auto mt-3 max-w-md text-sm text-cream/70">{t("closingBody")}</p>
-          <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
+
+          <div className="mt-6">
+            <LaunchOffer labels={offerLabels} compact />
+          </div>
+
+          <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
             {hotmartUrl ? (
               <a
                 href={hotmartUrl}
