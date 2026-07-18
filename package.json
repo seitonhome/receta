@@ -8,6 +8,10 @@
     "start": "next start",
     "lint": "eslint",
     "validate:recipes": "tsx scripts/validate-recipes.ts",
+    "prices:coverage": "tsx scripts/check-ingredient-coverage.ts",
+    "prices:outliers": "tsx scripts/check-cost-outliers.ts",
+    "prices:audit": "tsx scripts/audit-package-units.ts",
+    "prices:compute": "tsx scripts/compute-recipe-costs.ts",
     "generate:image-prompts": "tsx scripts/generate-image-prompts.ts",
     "generate:images": "tsx scripts/generate-images.ts"
   },

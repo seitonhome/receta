@@ -27,11 +27,8 @@ const POWDER_DENSITY_G_PER_ML = 0.55;
 
 const HANDFUL_G = 30;
 const PINCH_G = 0.3;
-const BUNCH_G = 35;
 /** Chopped fresh herb is light and loosely packed -- much less dense than a powder/spice. */
 const HERB_DENSITY_G_PER_ML = 0.2;
-const STALK_G = 10;
-const SPRIG_G = 2;
 
 function embeddedGramsPerUnit(unit: string): number | null {
   const match = unit.match(/\((\d+(?:\.\d+)?)\s*g/i);
@@ -45,29 +42,35 @@ export function convertIngredientCost(ingredient: Ingredient, price: IngredientP
   const unit = ingredient.unit.toLowerCase();
   const qty = ingredient.qty;
 
-  // Per-count price (e.g. aguacate por unidad, atún por lata) -- no conversion needed.
-  if (price.unit === "unidad" || price.unit === "lata" || price.unit === "botella" || price.unit === "caja") {
+  // Per-count price (e.g. aguacate por unidad) -- but some recipes measure
+  // the same ingredient in grams (e.g. "pulpa de aguacate, 300 g"), which
+  // must not be read as "300 unidades".
+  if (price.unit === "unidad") {
+    if (unit === "g" && price.avgUnitWeightG) {
+      return (qty / price.avgUnitWeightG) * price.priceCOP;
+    }
+    return qty * price.priceCOP;
+  }
+
+  // Canned/bottled/boxed goods: some recipes give a can/bottle count, others
+  // give the actual grams/ml used -- must not treat 400 g as "400 cans".
+  if (price.unit === "lata" || price.unit === "botella" || price.unit === "caja") {
+    if (unit === "g" && price.packageSizeG) {
+      return (qty / price.packageSizeG) * price.priceCOP;
+    }
+    if (price.packageSizeMl) {
+      if (unit === "ml") {
+        return (qty / price.packageSizeMl) * price.priceCOP;
+      }
+      if (unit in VOLUME_ML) {
+        return ((qty * VOLUME_ML[unit]) / price.packageSizeMl) * price.priceCOP;
+      }
+    }
     return qty * price.priceCOP;
   }
 
   if (price.unit === "docena") {
     return (qty / 12) * price.priceCOP;
-  }
-
-  if (price.unit === "atado") {
-    let grams: number;
-    if (unit === "g") {
-      grams = qty;
-    } else if (unit in VOLUME_ML) {
-      grams = qty * VOLUME_ML[unit] * HERB_DENSITY_G_PER_ML;
-    } else if (unit === "tallo" || unit === "tallos") {
-      grams = qty * STALK_G;
-    } else if (unit === "ramita" || unit === "ramitas") {
-      grams = qty * SPRIG_G;
-    } else {
-      grams = BUNCH_G;
-    }
-    return (grams / BUNCH_G) * price.priceCOP;
   }
 
   if (price.unit === "paquete") {
@@ -102,7 +105,8 @@ export function convertIngredientCost(ingredient: Ingredient, price: IngredientP
     if (price.unit === "l") {
       return (ml / 1000) * price.priceCOP;
     }
-    const grams = ml * POWDER_DENSITY_G_PER_ML;
+    const density = price.isFreshHerb ? HERB_DENSITY_G_PER_ML : POWDER_DENSITY_G_PER_ML;
+    const grams = ml * density;
     return (grams / 1000) * price.priceCOP;
   }
   if (unit === "pizca") {
