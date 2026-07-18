@@ -111,11 +111,11 @@ for (const category of Object.keys(FILE_BY_CATEGORY)) {
     const pattern = new RegExp(
       `("slug":\\s*"${row.slug}"[\\s\\S]{0,200}?"costPerServing":\\s*)\\d+([\\s\\S]{0,100}?"costDate":\\s*")[^"]*(")`
     );
-    const next = text.replace(pattern, `$1${row.newCost}$2${TODAY}$3`);
-    if (next === text) {
+    if (!pattern.test(text)) {
       console.warn(`No se pudo actualizar ${row.slug} en ${filePath} (patrón no encontrado)`);
+      continue;
     }
-    text = next;
+    text = text.replace(pattern, `$1${row.newCost}$2${TODAY}$3`);
   }
 
   writeFileSync(filePath, text, "utf-8");

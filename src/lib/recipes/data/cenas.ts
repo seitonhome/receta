@@ -5270,7 +5270,7 @@ export const cenas: Recipe[] = [
     "slug": "guiso-ligero-garbanzo-espinaca",
     "category": "cena",
     "baseServings": 4,
-    "costPerServing": 1700,
+    "costPerServing": 1800,
     "costCurrency": "COP",
     "costDate": "2026-07-17",
     "plateColors": [

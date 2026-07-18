@@ -183,6 +183,7 @@ export default async function RecipeDetailPage({
           <div className="mt-1">
             <PriceDisplay copAmount={recipe.costPerServing} locale={locale as Locale} />
           </div>
+          <p className="mt-2 text-xs italic text-cacao-soft">{t("costQualityNote")}</p>
           <p className="mt-2 text-xs text-cacao-soft">
             {content.costRefLocation} · {recipe.costDate}
           </p>

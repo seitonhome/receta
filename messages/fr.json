@@ -46,6 +46,7 @@
     "nutrition": "Valeurs nutritionnelles estimées (par portion)",
     "cost": "Coût estimé",
     "costPerServing": "par portion",
+    "costQualityNote": "Nous reflétons des ingrédients de qualité qui prennent bien soin de vous, pas l'option la moins chère du marché.",
     "tags": "Étiquettes",
     "backToList": "Retour aux recettes",
     "portionNote": "Recalcule les ingrédients et le coût total. Les valeurs nutritionnelles sont par portion et ne changent pas.",

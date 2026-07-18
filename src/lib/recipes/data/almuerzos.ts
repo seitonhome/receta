@@ -10815,7 +10815,7 @@ export const almuerzos: Recipe[] = [
     "slug": "shakshuka-pan-integral",
     "category": "almuerzo",
     "baseServings": 4,
-    "costPerServing": 5200,
+    "costPerServing": 5300,
     "costCurrency": "COP",
     "costDate": "2026-07-17",
     "plateColors": [

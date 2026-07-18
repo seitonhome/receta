@@ -46,6 +46,7 @@
     "nutrition": "Estimated nutrition (per serving)",
     "cost": "Estimated cost",
     "costPerServing": "per serving",
+    "costQualityNote": "We reflect quality ingredients that care for you well, not the cheapest option on the market.",
     "tags": "Tags",
     "backToList": "Back to recipes",
     "portionNote": "Recalculates ingredients and total cost. Nutrition info is per serving and doesn't change.",
