@@ -28,6 +28,10 @@ const POWDER_DENSITY_G_PER_ML = 0.55;
 const HANDFUL_G = 30;
 const PINCH_G = 0.3;
 const BUNCH_G = 35;
+/** Chopped fresh herb is light and loosely packed -- much less dense than a powder/spice. */
+const HERB_DENSITY_G_PER_ML = 0.2;
+const STALK_G = 10;
+const SPRIG_G = 2;
 
 function embeddedGramsPerUnit(unit: string): number | null {
   const match = unit.match(/\((\d+(?:\.\d+)?)\s*g/i);
@@ -51,16 +55,31 @@ export function convertIngredientCost(ingredient: Ingredient, price: IngredientP
   }
 
   if (price.unit === "atado") {
-    const grams = unit.includes("g") && !unit.includes("kg") ? qty : BUNCH_G;
+    let grams: number;
+    if (unit === "g") {
+      grams = qty;
+    } else if (unit in VOLUME_ML) {
+      grams = qty * VOLUME_ML[unit] * HERB_DENSITY_G_PER_ML;
+    } else if (unit === "tallo" || unit === "tallos") {
+      grams = qty * STALK_G;
+    } else if (unit === "ramita" || unit === "ramitas") {
+      grams = qty * SPRIG_G;
+    } else {
+      grams = BUNCH_G;
+    }
     return (grams / BUNCH_G) * price.priceCOP;
   }
 
   if (price.unit === "paquete") {
-    // Recipes referencing packaged goods (bread, tortillas, cookies...) give
-    // a per-slice/per-piece count; treat that count as "one package" worth
-    // when there's no better signal, which is the honest limit of a
-    // per-recipe estimate for a multi-serving package.
-    return price.priceCOP * Math.max(1, qty / 4);
+    if (unit === "g" && price.packageSizeG) {
+      return (qty / price.packageSizeG) * price.priceCOP;
+    }
+    if (price.packageUnitCount) {
+      return (qty / price.packageUnitCount) * price.priceCOP;
+    }
+    // No package-size data yet -- treat the count as "one package" worth,
+    // the honest fallback until packageUnitCount/packageSizeG is set.
+    return price.priceCOP * Math.max(1, qty / 10);
   }
 
   // From here, price.unit is "kg" or "l" -- both priced per 1000 of their base.
