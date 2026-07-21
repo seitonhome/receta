@@ -28,6 +28,11 @@
     "title": "Recetas",
     "subtitle": "Organizadas por categoría y momento del día. Cada una respeta la coherencia nutricional entre almuerzo y cena."
   },
+  "mealBanner": {
+    "eyebrow": "Sugerencia de ahora",
+    "suggestion": "Buen momento para {category}. Prueba:",
+    "cta": "Ver receta"
+  },
   "recipe": {
     "servings": "Porciones",
     "prep": "Preparación",

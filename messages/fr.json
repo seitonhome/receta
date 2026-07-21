@@ -28,6 +28,11 @@
     "title": "Recettes",
     "subtitle": "Organisées par catégorie et par moment de la journée. Chacune respecte la cohérence nutritionnelle entre déjeuner et dîner."
   },
+  "mealBanner": {
+    "eyebrow": "Suggestion du moment",
+    "suggestion": "Bon moment pour {category}. Essayez :",
+    "cta": "Voir la recette"
+  },
   "recipe": {
     "servings": "Portions",
     "prep": "Préparation",

@@ -28,6 +28,11 @@
     "title": "Recipes",
     "subtitle": "Organized by category and time of day. Each one respects nutritional coherence between lunch and dinner."
   },
+  "mealBanner": {
+    "eyebrow": "Suggestion for now",
+    "suggestion": "Good time for {category}. Try:",
+    "cta": "View recipe"
+  },
   "recipe": {
     "servings": "Servings",
     "prep": "Prep",

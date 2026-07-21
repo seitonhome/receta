@@ -3,9 +3,10 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import type { Locale } from "@/lib/recipes/types";
-import { recipes } from "@/lib/recipes/data";
+import { recipes, getRecipeContent } from "@/lib/recipes/data";
 import { RecipeCard } from "@/components/recipe-card";
 import { RecipesLanding } from "@/components/recipes-landing";
+import { MealTimeBanner, type MealCategory } from "@/components/meal-time-banner";
 import { getAccessStatus } from "@/lib/access/purchase-status";
 
 export function generateStaticParams() {
@@ -30,6 +31,20 @@ export default async function RecipesIndexPage({
 
   const t = await getTranslations({ locale, namespace: "recipesIndex" });
   const tCategory = await getTranslations({ locale, namespace: "category" });
+  const tMealBanner = await getTranslations({ locale, namespace: "mealBanner" });
+
+  const recipesByCategory = Object.fromEntries(
+    CATEGORY_ORDER.map((category) => [
+      category,
+      recipes
+        .filter((r) => r.category === category)
+        .map((r) => ({ slug: r.slug, title: getRecipeContent(r, locale as Locale).content.title })),
+    ])
+  ) as Record<MealCategory, { slug: string; title: string }[]>;
+
+  const categoryLabels = Object.fromEntries(
+    CATEGORY_ORDER.map((category) => [category, tCategory(category)])
+  ) as Record<MealCategory, string>;
 
   return (
     <div className="mx-auto max-w-5xl px-5 py-14">
@@ -40,6 +55,18 @@ export default async function RecipesIndexPage({
         {t("title")}
       </h1>
       <p className="mt-3 max-w-xl text-cacao-soft">{t("subtitle")}</p>
+
+      <div className="mt-8">
+        <MealTimeBanner
+          recipesByCategory={recipesByCategory}
+          categoryLabels={categoryLabels}
+          labels={{
+            eyebrow: tMealBanner("eyebrow"),
+            suggestion: tMealBanner.raw("suggestion"),
+            cta: tMealBanner("cta"),
+          }}
+        />
+      </div>
 
       {CATEGORY_ORDER.map((category) => {
         const items = recipes.filter((r) => r.category === category);
