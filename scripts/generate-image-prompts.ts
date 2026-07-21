@@ -18,7 +18,7 @@ const CATEGORY_LABEL: Record<string, string> = {
 function buildPrompt(r: (typeof recipes)[number]): string {
   const c = r.content.es!;
   const topIngredients = c.ingredients
-    .slice(0, 4)
+    .slice(0, 6)
     .map((i) => i.name.split(/[,(]/)[0].trim())
     .join(", ");
   const portionNote =
@@ -31,10 +31,14 @@ function buildPrompt(r: (typeof recipes)[number]): string {
           : "a small appetizer portion";
 
   return (
-    `Editorial food photography style illustration of ${c.title} (${CATEGORY_LABEL[r.category]}), ` +
-    `featuring ${topIngredients}, styled with warm natural light, on ceramic tableware with a linen napkin ` +
-    `in soft focus background, shallow depth of field, ${portionNote}, realistic and appetizing, ` +
-    `no text, no hands, no logos.`
+    `A photorealistic professional food photograph, shot on a DSLR with a 50mm lens, of ${c.title} ` +
+    `(${CATEGORY_LABEL[r.category]}), showing ${topIngredients} plated together -- ` +
+    `any sauce, dressing, broth, or glaze clearly visible and glistening on the plate, fresh herb garnish ` +
+    `visible on top, natural food textures and slight imperfections, styled with warm natural light, ` +
+    `on ceramic tableware with a linen napkin in soft focus background, shallow depth of field, ` +
+    `${portionNote}, appetizing and true to life. ` +
+    `Not an illustration, not a painting, not a 3D render, not clipart -- a real photograph. ` +
+    `No text, no hands, no logos.`
   );
 }
 

@@ -5,6 +5,7 @@
  *
  *   npm run generate:images            # all 100
  *   LIMIT=3 npm run generate:images    # just the first 3, to sanity-check style/cost before committing to all 100
+ *   SLUGS=a,b,c npm run generate:images  # only these specific slugs, e.g. one per category for a QA pass
  *
  * Requires OPENAI_API_KEY in .env.local (see .env.example) with billing
  * enabled on the account -- this spends real money (~$0.01-0.07 per image
@@ -29,6 +30,7 @@ const OUT_DIR = path.join(process.cwd(), "public", "recipes");
 const QUALITY: "low" | "medium" | "high" = (process.env.IMAGE_QUALITY as "low" | "medium" | "high") ?? "medium";
 const CONCURRENCY = Number(process.env.CONCURRENCY ?? 4);
 const LIMIT = process.env.LIMIT ? Number(process.env.LIMIT) : undefined;
+const SLUGS = process.env.SLUGS ? new Set(process.env.SLUGS.split(",").map((s) => s.trim())) : undefined;
 
 if (!process.env.OPENAI_API_KEY) {
   console.error("Missing OPENAI_API_KEY. Add it to .env.local (see .env.example) and try again.");
@@ -40,7 +42,8 @@ const client = new OpenAI();
 const allPrompts: PromptEntry[] = JSON.parse(
   readFileSync(path.join(process.cwd(), "content", "image-prompts.json"), "utf-8")
 );
-const prompts = LIMIT ? allPrompts.slice(0, LIMIT) : allPrompts;
+let prompts = SLUGS ? allPrompts.filter((p) => SLUGS.has(p.slug)) : allPrompts;
+if (LIMIT) prompts = prompts.slice(0, LIMIT);
 
 mkdirSync(OUT_DIR, { recursive: true });
 
@@ -75,7 +78,7 @@ async function generateOne(entry: PromptEntry, index: number, total: number) {
 
 async function runPool() {
   let cursor = 0;
-  let active: Promise<void>[] = [];
+  const active: Promise<void>[] = [];
 
   async function next(): Promise<void> {
     const i = cursor++;
