@@ -30,6 +30,7 @@ export function CountdownTimer({
   const [remaining, setRemaining] = useState<Remaining | null>(null);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: see comment above about avoiding a hydration mismatch.
     setRemaining(getRemaining(deadline));
     const id = setInterval(() => setRemaining(getRemaining(deadline)), 1000);
     return () => clearInterval(id);

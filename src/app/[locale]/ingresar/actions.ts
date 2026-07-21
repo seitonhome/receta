@@ -49,6 +49,19 @@ export type VerifyState = {
   message?: string;
 };
 
+/**
+ * `next` comes straight from a query param a visitor controls
+ * (/ingresar?next=...), so it must be a same-site path before it's ever
+ * passed to redirect() -- otherwise a crafted link could send someone who
+ * just authenticated off to an attacker-controlled URL.
+ */
+function safeNextPath(next: string): string {
+  if (next.startsWith("/") && !next.startsWith("//") && !next.startsWith("/\\")) {
+    return next;
+  }
+  return "/";
+}
+
 export async function verifyEmailCode(
   _prevState: VerifyState,
   formData: FormData
@@ -59,7 +72,7 @@ export async function verifyEmailCode(
 
   const email = String(formData.get("email") ?? "").trim();
   const token = String(formData.get("token") ?? "").trim();
-  const next = String(formData.get("next") ?? "/");
+  const next = safeNextPath(String(formData.get("next") ?? "/"));
 
   if (!/^\d{4,10}$/.test(token)) {
     return { status: "error", message: "Escribe el código tal como llegó en el correo, solo números." };

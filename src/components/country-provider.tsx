@@ -15,6 +15,7 @@ export function CountryProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const stored = window.localStorage.getItem(STORAGE_KEY) as CountryCode | null;
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- one-time sync from localStorage on mount; value isn't available during SSR so it can't be a lazy useState initializer.
     if (stored) setCountryState(stored);
   }, []);
 
