@@ -31,6 +31,16 @@ export const routing = defineRouting({
       en: "/shopping-list",
       fr: "/liste-de-courses",
     },
+    "/terminos": {
+      es: "/terminos",
+      en: "/terms",
+      fr: "/conditions",
+    },
+    "/privacidad": {
+      es: "/privacidad",
+      en: "/privacy",
+      fr: "/confidentialite",
+    },
   },
 });
 

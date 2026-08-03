@@ -2,6 +2,7 @@
 
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
+import { createAdminClient } from "@/lib/supabase/admin";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
 
 export type SignInState = {
@@ -12,6 +13,38 @@ export type SignInState = {
 const NOT_CONFIGURED_MESSAGE =
   "El proyecto de Supabase todavía no está conectado (ver .env.example). El inicio de sesión no puede activarse hasta configurarlo.";
 
+const RATE_LIMIT_WINDOW_MINUTES = 10;
+const RATE_LIMIT_MAX_REQUESTS = 3;
+
+/**
+ * Caps how many codes can be requested for one email in a rolling window,
+ * so the sign-in form can't be used to spam someone else's inbox. Fails
+ * open (allows the request) if the service-role key isn't configured or the
+ * check itself errors -- rate limiting is a safeguard, not something that
+ * should be able to take sign-in down entirely.
+ */
+async function isRateLimited(email: string): Promise<boolean> {
+  if (!process.env.SUPABASE_SERVICE_ROLE_KEY) return false;
+
+  try {
+    const admin = createAdminClient();
+    const since = new Date(Date.now() - RATE_LIMIT_WINDOW_MINUTES * 60 * 1000).toISOString();
+    const { count, error } = await admin
+      .from("otp_requests")
+      .select("id", { count: "exact", head: true })
+      .eq("email", email)
+      .gte("requested_at", since);
+
+    if (error) return false;
+    if ((count ?? 0) >= RATE_LIMIT_MAX_REQUESTS) return true;
+
+    await admin.from("otp_requests").insert({ email });
+    return false;
+  } catch {
+    return false;
+  }
+}
+
 export async function requestMagicLink(
   _prevState: SignInState,
   formData: FormData
@@ -20,10 +53,17 @@ export async function requestMagicLink(
     return { status: "error", message: NOT_CONFIGURED_MESSAGE };
   }
 
-  const email = String(formData.get("email") ?? "").trim();
+  const email = String(formData.get("email") ?? "").trim().toLowerCase();
 
   if (!email || !email.includes("@")) {
     return { status: "error", message: "Escribe un correo válido." };
+  }
+
+  if (await isRateLimited(email)) {
+    return {
+      status: "error",
+      message: "Ya pediste varios códigos para este correo. Espera unos minutos antes de intentar de nuevo.",
+    };
   }
 
   const supabase = await createClient();

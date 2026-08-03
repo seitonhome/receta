@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { hasLocale } from "next-intl";
@@ -18,6 +19,9 @@ const fraunces = Fraunces({
   display: "swap",
 });
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+const OG_LOCALE: Record<string, string> = { es: "es_CO", en: "en_US", fr: "fr_FR" };
+
 export async function generateMetadata({
   params,
 }: {
@@ -25,9 +29,25 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "home" });
+  const title = t("title");
+  const description = t("subtitle");
+
   return {
-    title: t("title"),
-    description: t("subtitle"),
+    metadataBase: new URL(SITE_URL),
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: "website",
+      locale: OG_LOCALE[locale] ?? "es_CO",
+      siteName: title,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
   };
 }
 
@@ -60,6 +80,7 @@ export default async function LocaleLayout({
             <SiteFooter />
           </CountryProvider>
         </NextIntlClientProvider>
+        <Analytics />
       </body>
     </html>
   );

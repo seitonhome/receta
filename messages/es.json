@@ -59,8 +59,10 @@
     "favoriteSaved": "Guardada en favoritos",
     "favoriteRemoved": "Quitada de favoritos",
     "favoriteError": "No se pudo guardar. Intenta de nuevo.",
-    "shareSoon": "En la app real: genera un enlace para compartir",
-    "printSoon": "En la app real: abre una vista lista para imprimir",
+    "shareTitle": "Compartir",
+    "shareCopied": "Enlace copiado",
+    "shareError": "No se pudo copiar el enlace",
+    "printTitle": "Imprimir",
     "addToShoppingList": "Agregar seleccionados a la lista",
     "addedToShoppingList": "Ingredientes agregados a tu lista de compras"
   },
@@ -85,7 +87,7 @@
     "signOut": "Cerrar sesión",
     "greeting": "Hola, {email}",
     "noAccessTitle": "Todavía no vemos una compra activa",
-    "noAccessBody": "Iniciaste sesión correctamente, pero este correo no tiene una compra activa de Comidas que te Cuidan. Si compraste con otro correo, escríbenos a soporte; si no has comprado, puedes hacerlo desde la página de recetas.",
+    "noAccessBody": "Iniciaste sesión correctamente, pero este correo no tiene una compra activa de Comidas que te Cuidan. Si compraste con otro correo, escríbenos a soporte (xiomilena@yahoo.com); si no has comprado, puedes hacerlo desde la página de recetas.",
     "buyCta": "Ver el producto en Hotmart",
     "favoritesTitle": "Tus favoritos",
     "favoritesEmpty": "Todavía no has guardado ninguna receta. Explora las recetas y toca el corazón para guardarlas aquí.",
@@ -170,10 +172,12 @@
     "faq3A": "Son estimaciones de referencia para Bogotá, Colombia, marcadas siempre con su fecha de actualización — no son precios en tiempo real de un supermercado específico.",
     "faq4Q": "¿Sirve si tengo una condición médica o alergia?",
     "faq4A": "Cada receta declara alérgenos y ofrece alternativas. El producto no sustituye la orientación de un profesional de la salud.",
+    "faq5Q": "¿Y si no me gusta?",
+    "faq5A": "Tienes 7 días desde la compra para pedir un reembolso completo — escríbenos a soporte (xiomilena@yahoo.com) y lo gestionamos a través de Hotmart.",
     "closingTitle": "100 recetas. Tres idiomas. Un principio simple.",
     "closingBody": "Accede con el mismo correo que usaste en tu compra de Hotmart.",
     "signedInNoAccessTitle": "Ya iniciaste sesión, pero no vemos una compra activa",
-    "signedInNoAccessBody": "Estás conectado como {email}. Si compraste con otro correo, cierra sesión y vuelve a entrar con ese. Si compraste con este mismo correo y sigue sin aparecer, escríbenos a soporte."
+    "signedInNoAccessBody": "Estás conectado como {email}. Si compraste con otro correo, cierra sesión y vuelve a entrar con ese. Si compraste con este mismo correo y sigue sin aparecer, escríbenos a soporte (xiomilena@yahoo.com)."
   },
   "shoppingList": {
     "title": "Lista de compras",
@@ -198,6 +202,17 @@
     "removeItem": "Quitar"
   },
   "footer": {
-    "note": "Comidas que te Cuidan — Meals that Care — Des Repas qui Prennent Soin."
+    "note": "Comidas que te Cuidan — Meals that Care — Des Repas qui Prennent Soin.",
+    "terms": "Términos y condiciones",
+    "privacy": "Privacidad",
+    "support": "Soporte"
+  },
+  "errors": {
+    "title404": "No encontramos esta página",
+    "body404": "Puede que el enlace esté roto o que la página se haya movido.",
+    "title500": "Algo salió mal",
+    "body500": "No fue tu culpa — tuvimos un error inesperado. Intenta de nuevo en un momento.",
+    "retry": "Intentar de nuevo",
+    "backHome": "Volver al inicio"
   }
 }

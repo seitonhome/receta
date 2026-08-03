@@ -59,8 +59,10 @@
     "favoriteSaved": "Ajoutée aux favoris",
     "favoriteRemoved": "Retirée des favoris",
     "favoriteError": "Impossible d'enregistrer. Réessayez.",
-    "shareSoon": "Dans l'application réelle : génère un lien à partager",
-    "printSoon": "Dans l'application réelle : ouvre une vue prête à imprimer",
+    "shareTitle": "Partager",
+    "shareCopied": "Lien copié",
+    "shareError": "Impossible de copier le lien",
+    "printTitle": "Imprimer",
     "addToShoppingList": "Ajouter la sélection à la liste",
     "addedToShoppingList": "Ingrédients ajoutés à votre liste de courses"
   },
@@ -85,7 +87,7 @@
     "signOut": "Se déconnecter",
     "greeting": "Bonjour, {email}",
     "noAccessTitle": "Nous ne voyons pas encore d'achat actif",
-    "noAccessBody": "Connexion réussie, mais ce courriel n'a pas d'achat actif de Des Repas qui Prennent Soin. Si vous avez acheté avec un autre courriel, contactez le support ; sinon, vous pouvez acheter depuis la page des recettes.",
+    "noAccessBody": "Connexion réussie, mais ce courriel n'a pas d'achat actif de Des Repas qui Prennent Soin. Si vous avez acheté avec un autre courriel, contactez le support (xiomilena@yahoo.com) ; sinon, vous pouvez acheter depuis la page des recettes.",
     "buyCta": "Voir le produit sur Hotmart",
     "favoritesTitle": "Vos favoris",
     "favoritesEmpty": "Vous n'avez encore enregistré aucune recette. Explorez les recettes et touchez le cœur pour les enregistrer ici.",
@@ -170,10 +172,12 @@
     "faq3A": "Ce sont des estimations de référence pour Bogotá, Colombie, toujours accompagnées de leur date de mise à jour — pas des prix en temps réel d'un magasin précis.",
     "faq4Q": "Est-ce adapté si j'ai une condition médicale ou une allergie ?",
     "faq4A": "Chaque recette indique les allergènes et propose des alternatives. Le produit ne remplace pas l'avis d'un professionnel de santé.",
+    "faq5Q": "Et si ça ne me plaît pas ?",
+    "faq5A": "Vous avez 7 jours après l'achat pour demander un remboursement complet -- contactez le support (xiomilena@yahoo.com) et nous nous en occupons via Hotmart.",
     "closingTitle": "100 recettes. Trois langues. Un principe simple.",
     "closingBody": "Connectez-vous avec le même courriel utilisé lors de votre achat sur Hotmart.",
     "signedInNoAccessTitle": "Vous êtes connecté(e), mais nous ne voyons pas d'achat actif",
-    "signedInNoAccessBody": "Vous êtes connecté(e) en tant que {email}. Si vous avez acheté avec un autre courriel, déconnectez-vous et reconnectez-vous avec celui-ci. Si vous avez acheté avec ce même courriel et qu'il n'apparaît toujours pas, contactez le support."
+    "signedInNoAccessBody": "Vous êtes connecté(e) en tant que {email}. Si vous avez acheté avec un autre courriel, déconnectez-vous et reconnectez-vous avec celui-ci. Si vous avez acheté avec ce même courriel et qu'il n'apparaît toujours pas, contactez le support (xiomilena@yahoo.com)."
   },
   "shoppingList": {
     "title": "Liste de courses",
@@ -198,6 +202,17 @@
     "removeItem": "Retirer"
   },
   "footer": {
-    "note": "Comidas que te Cuidan — Meals that Care — Des Repas qui Prennent Soin."
+    "note": "Comidas que te Cuidan — Meals that Care — Des Repas qui Prennent Soin.",
+    "terms": "Conditions générales",
+    "privacy": "Confidentialité",
+    "support": "Support"
+  },
+  "errors": {
+    "title404": "Page introuvable",
+    "body404": "Le lien est peut-être rompu, ou la page a été déplacée.",
+    "title500": "Une erreur est survenue",
+    "body500": "Ce n'est pas votre faute -- une erreur inattendue s'est produite. Réessayez dans un instant.",
+    "retry": "Réessayer",
+    "backHome": "Retour à l'accueil"
   }
 }

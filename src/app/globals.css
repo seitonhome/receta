@@ -63,6 +63,16 @@ body {
   color: var(--cacao);
 }
 
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  a[href]::after {
+    content: "";
+  }
+}
+
 @keyframes countdown-tick {
   0% {
     transform: scale(1);

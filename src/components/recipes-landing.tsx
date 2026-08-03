@@ -48,7 +48,7 @@ export async function RecipesLanding({
     ours: t(`diffRow${n}Ours` as "diffRow1Ours"),
   }));
 
-  const faqs = [1, 2, 3, 4].map((n) => ({
+  const faqs = [1, 2, 3, 4, 5].map((n) => ({
     q: t(`faq${n}Q` as "faq1Q"),
     a: t(`faq${n}A` as "faq1A"),
   }));

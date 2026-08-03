@@ -11,7 +11,7 @@ export async function SiteHeader() {
   const access = await getAccessStatus();
 
   return (
-    <header className="border-b border-line">
+    <header className="border-b border-line print:hidden">
       <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4 px-5 py-5">
         <Link href="/" className="font-display text-xl font-semibold tracking-tight">
           {t("brand")}{" "}

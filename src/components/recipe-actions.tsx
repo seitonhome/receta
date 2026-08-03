@@ -7,8 +7,10 @@ type Labels = {
   favoriteSaved: string;
   favoriteRemoved: string;
   favoriteError: string;
-  shareSoon: string;
-  printSoon: string;
+  shareTitle: string;
+  shareCopied: string;
+  shareError: string;
+  printTitle: string;
 };
 
 export function RecipeActions({
@@ -45,8 +47,32 @@ export function RecipeActions({
     });
   }
 
+  async function onShareClick() {
+    const url = window.location.href;
+    try {
+      if (navigator.share) {
+        await navigator.share({ url });
+        return;
+      }
+      await navigator.clipboard.writeText(url);
+      flash(labels.shareCopied);
+    } catch {
+      // AbortError from a cancelled navigator.share() isn't a real failure.
+      try {
+        await navigator.clipboard.writeText(url);
+        flash(labels.shareCopied);
+      } catch {
+        flash(labels.shareError);
+      }
+    }
+  }
+
+  function onPrintClick() {
+    window.print();
+  }
+
   return (
-    <div className="relative flex gap-2">
+    <div className="relative flex gap-2 print:hidden">
       <button
         type="button"
         onClick={onFavoriteClick}
@@ -62,16 +88,16 @@ export function RecipeActions({
       </button>
       <button
         type="button"
-        onClick={() => flash(labels.shareSoon)}
-        title="Compartir"
+        onClick={onShareClick}
+        title={labels.shareTitle}
         className="flex h-9 w-9 items-center justify-center rounded-full border border-line bg-cream-2 text-cacao-soft hover:text-cacao"
       >
         ↗
       </button>
       <button
         type="button"
-        onClick={() => flash(labels.printSoon)}
-        title="Imprimir"
+        onClick={onPrintClick}
+        title={labels.printTitle}
         className="flex h-9 w-9 items-center justify-center rounded-full border border-line bg-cream-2 text-cacao-soft hover:text-cacao"
       >
         ⎙

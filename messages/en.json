@@ -59,8 +59,10 @@
     "favoriteSaved": "Saved to favorites",
     "favoriteRemoved": "Removed from favorites",
     "favoriteError": "Couldn't save that. Try again.",
-    "shareSoon": "In the real app: generates a link to share",
-    "printSoon": "In the real app: opens a print-ready view",
+    "shareTitle": "Share",
+    "shareCopied": "Link copied",
+    "shareError": "Couldn't copy the link",
+    "printTitle": "Print",
     "addToShoppingList": "Add selected to list",
     "addedToShoppingList": "Ingredients added to your shopping list"
   },
@@ -85,7 +87,7 @@
     "signOut": "Sign out",
     "greeting": "Hi, {email}",
     "noAccessTitle": "We don't see an active purchase yet",
-    "noAccessBody": "You signed in successfully, but this email doesn't have an active purchase of Meals that Care. If you purchased with a different email, contact support; if you haven't purchased yet, you can do so from the recipes page.",
+    "noAccessBody": "You signed in successfully, but this email doesn't have an active purchase of Meals that Care. If you purchased with a different email, contact support (xiomilena@yahoo.com); if you haven't purchased yet, you can do so from the recipes page.",
     "buyCta": "See the product on Hotmart",
     "favoritesTitle": "Your favorites",
     "favoritesEmpty": "You haven't saved any recipes yet. Explore the recipes and tap the heart to save them here.",
@@ -170,10 +172,12 @@
     "faq3A": "They're reference estimates for Bogotá, Colombia, always marked with their update date — not live prices pulled from a specific store.",
     "faq4Q": "Does this work if I have a medical condition or allergy?",
     "faq4A": "Every recipe lists allergens and offers alternatives. The product doesn't replace guidance from a health professional.",
+    "faq5Q": "What if I don't like it?",
+    "faq5A": "You have 7 days from purchase to request a full refund -- contact support (xiomilena@yahoo.com) and we'll handle it through Hotmart.",
     "closingTitle": "100 recipes. Three languages. One simple principle.",
     "closingBody": "Sign in with the same email you used for your Hotmart purchase.",
     "signedInNoAccessTitle": "You're signed in, but we don't see an active purchase",
-    "signedInNoAccessBody": "You're connected as {email}. If you purchased with a different email, sign out and sign back in with that one. If you purchased with this same email and it still isn't showing up, contact support."
+    "signedInNoAccessBody": "You're connected as {email}. If you purchased with a different email, sign out and sign back in with that one. If you purchased with this same email and it still isn't showing up, contact support (xiomilena@yahoo.com)."
   },
   "shoppingList": {
     "title": "Shopping list",
@@ -198,6 +202,17 @@
     "removeItem": "Remove"
   },
   "footer": {
-    "note": "Comidas que te Cuidan — Meals that Care — Des Repas qui Prennent Soin."
+    "note": "Comidas que te Cuidan — Meals that Care — Des Repas qui Prennent Soin.",
+    "terms": "Terms and conditions",
+    "privacy": "Privacy",
+    "support": "Support"
+  },
+  "errors": {
+    "title404": "We couldn't find this page",
+    "body404": "The link might be broken, or the page may have moved.",
+    "title500": "Something went wrong",
+    "body500": "It wasn't your fault -- we hit an unexpected error. Try again in a moment.",
+    "retry": "Try again",
+    "backHome": "Back home"
   }
 }

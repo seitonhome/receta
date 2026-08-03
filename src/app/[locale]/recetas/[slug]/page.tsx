@@ -74,8 +74,10 @@ export default async function RecipeDetailPage({
                 favoriteSaved: t("favoriteSaved"),
                 favoriteRemoved: t("favoriteRemoved"),
                 favoriteError: t("favoriteError"),
-                shareSoon: t("shareSoon"),
-                printSoon: t("printSoon"),
+                shareTitle: t("shareTitle"),
+                shareCopied: t("shareCopied"),
+                shareError: t("shareError"),
+                printTitle: t("printTitle"),
               }}
             />
           </div>
