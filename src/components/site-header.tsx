@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { getLocale, getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { LanguageSwitcher } from "@/components/language-switcher";
@@ -13,11 +14,23 @@ export async function SiteHeader() {
   return (
     <header className="border-b border-line print:hidden">
       <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4 px-5 py-5">
-        <Link href="/" className="font-display text-xl font-semibold tracking-tight">
-          {t("brand")}{" "}
-          <em className="font-display text-terracotta not-italic italic font-medium">
-            {t("brandAccent")}
-          </em>
+        <Link href="/" className="flex items-center gap-2.5">
+          <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-[#f6f1e7] ring-1 ring-line">
+            <Image
+              src="/logo-icon.png"
+              alt=""
+              width={40}
+              height={40}
+              className="size-8 rounded-full object-cover"
+              priority
+            />
+          </span>
+          <span className="font-display text-xl font-semibold tracking-tight">
+            {t("brand")}{" "}
+            <em className="font-display text-terracotta not-italic italic font-medium">
+              {t("brandAccent")}
+            </em>
+          </span>
         </Link>
 
         <nav className="flex items-center gap-5 text-sm text-cacao-soft">

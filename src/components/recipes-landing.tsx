@@ -85,12 +85,12 @@ export async function RecipesLanding({
               href={hotmartUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center rounded-full bg-cacao px-6 py-3 text-sm font-medium text-cream transition-opacity hover:opacity-90"
+              className="inline-flex items-center rounded-full bg-gradient-to-r from-terracotta to-gold px-6 py-3 text-sm font-semibold text-cream shadow-md shadow-terracotta/30 transition hover:-translate-y-0.5 hover:shadow-lg hover:shadow-terracotta/40"
             >
               {t("ctaBuy")}
             </a>
           ) : (
-            <span className="inline-flex items-center rounded-full border border-line bg-cream-2 px-6 py-3 text-sm font-medium text-cacao-soft">
+            <span className="inline-flex items-center rounded-full bg-gradient-to-r from-terracotta to-gold px-6 py-3 text-sm font-semibold text-cream shadow-md shadow-terracotta/30">
               {t("ctaBuySoon")}
             </span>
           )}
@@ -327,12 +327,12 @@ export async function RecipesLanding({
                 href={hotmartUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center rounded-full bg-terracotta px-6 py-3 text-sm font-medium text-cream transition-opacity hover:opacity-90"
+                className="inline-flex items-center rounded-full bg-gradient-to-r from-terracotta to-gold px-6 py-3 text-sm font-semibold text-cream shadow-md shadow-cacao/40 transition hover:-translate-y-0.5 hover:shadow-lg"
               >
                 {t("ctaBuy")}
               </a>
             ) : (
-              <span className="inline-flex items-center rounded-full border border-cream/25 px-6 py-3 text-sm font-medium text-cream/70">
+              <span className="inline-flex items-center rounded-full bg-gradient-to-r from-terracotta to-gold px-6 py-3 text-sm font-semibold text-cream shadow-md shadow-cacao/40">
                 {t("ctaBuySoon")}
               </span>
             )}
