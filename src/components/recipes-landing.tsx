@@ -56,7 +56,7 @@ export async function RecipesLanding({
   const offerLabels = {
     eyebrow: t("offerEyebrow"),
     savings: t("offerSavings", { amount: REGULAR_PRICE_USD - LAUNCH_PRICE_USD }),
-    returnsNote: t("offerReturnsNote"),
+    returnsNote: t("offerReturnsNote", { amount: REGULAR_PRICE_USD }),
     days: t("offerDays"),
     hours: t("offerHours"),
     minutes: t("offerMinutes"),

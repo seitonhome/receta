@@ -99,7 +99,7 @@
     "heroSubtitle": "Ce n'est pas un PDF de recettes de plus. C'est une application web premium qui distingue ce qu'on mange au déjeuner de ce qu'on mange au dîner — et qui vous dit exactement combien ça va vous coûter avant d'aller faire les courses.",
     "offerEyebrow": "Accès de lancement",
     "offerSavings": "Vous économisez {amount} USD",
-    "offerReturnsNote": "Ce prix se termine à la fin du compte à rebours. Ensuite, il passe à 69 USD.",
+    "offerReturnsNote": "Ce prix se termine à la fin du compte à rebours. Ensuite, il passe à {amount} USD.",
     "offerDays": "jours",
     "offerHours": "heures",
     "offerMinutes": "min",
