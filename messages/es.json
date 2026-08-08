@@ -98,6 +98,8 @@
     "heroTitle": "Un recetario que sabe qué hora es.",
     "heroSubtitle": "No es un PDF de recetas más. Es una aplicación web premium que separa lo que se come al almuerzo de lo que se come en la cena — y te dice exactamente cuánto te va a costar antes de ir al mercado.",
     "offerEyebrow": "Acceso de lanzamiento",
+    "offerEyebrowSecond": "Oferta extendida",
+    "offerEyebrowRegular": "Precio regular",
     "offerSavings": "Ahorras ${amount} USD",
     "offerReturnsNote": "Este valor se cierra cuando termine la cuenta regresiva. Después, pasa a ${amount} USD.",
     "offerDays": "días",

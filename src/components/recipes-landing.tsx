@@ -4,7 +4,7 @@ import type { Locale } from "@/lib/recipes/types";
 import { recipes, getRecipe, getRecipeContent } from "@/lib/recipes/data";
 import { RecipePlate } from "@/components/recipe-plate";
 import { LaunchOffer } from "@/components/launch-offer";
-import { LAUNCH_PRICE_USD, REGULAR_PRICE_USD } from "@/lib/launch-offer";
+import { LAUNCH_PRICE_USD, REGULAR_PRICE_USD, getOfferPhase } from "@/lib/launch-offer";
 import type { AccessStatus } from "@/lib/access/purchase-status";
 
 const CATEGORY_COUNTS = {
@@ -53,8 +53,11 @@ export async function RecipesLanding({
     a: t(`faq${n}A` as "faq1A"),
   }));
 
+  const offerPhase = getOfferPhase();
   const offerLabels = {
     eyebrow: t("offerEyebrow"),
+    eyebrowSecond: t("offerEyebrowSecond"),
+    eyebrowRegular: t("offerEyebrowRegular"),
     savings: t("offerSavings", { amount: REGULAR_PRICE_USD - LAUNCH_PRICE_USD }),
     returnsNote: t("offerReturnsNote", { amount: REGULAR_PRICE_USD }),
     days: t("offerDays"),
@@ -76,7 +79,7 @@ export async function RecipesLanding({
         <p className="mx-auto mt-5 max-w-xl text-lg text-cacao-soft">{t("heroSubtitle")}</p>
 
         <div className="mt-8">
-          <LaunchOffer labels={offerLabels} />
+          <LaunchOffer phase={offerPhase} labels={offerLabels} />
         </div>
 
         <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -318,7 +321,7 @@ export async function RecipesLanding({
           <p className="mx-auto mt-3 max-w-md text-sm text-cream/70">{t("closingBody")}</p>
 
           <div className="mt-6">
-            <LaunchOffer labels={offerLabels} compact />
+            <LaunchOffer phase={offerPhase} labels={offerLabels} compact />
           </div>
 
           <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">

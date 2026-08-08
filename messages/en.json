@@ -98,6 +98,8 @@
     "heroTitle": "A recipe book that knows what time it is.",
     "heroSubtitle": "This isn't another recipe PDF. It's a premium web app that separates what you eat at lunch from what you eat at dinner — and tells you exactly what it'll cost before you go shopping.",
     "offerEyebrow": "Launch access",
+    "offerEyebrowSecond": "Extended offer",
+    "offerEyebrowRegular": "Regular price",
     "offerSavings": "You save ${amount} USD",
     "offerReturnsNote": "This price closes when the countdown ends. After that, it goes to ${amount} USD.",
     "offerDays": "days",
