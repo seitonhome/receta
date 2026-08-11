@@ -9,6 +9,7 @@ import { routing } from "@/i18n/routing";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { CountryProvider } from "@/components/country-provider";
+import { MetaPixel } from "@/components/meta-pixel";
 import "../globals.css";
 
 const fraunces = Fraunces({
@@ -81,6 +82,7 @@ export default async function LocaleLayout({
           </CountryProvider>
         </NextIntlClientProvider>
         <Analytics />
+        <MetaPixel />
       </body>
     </html>
   );
